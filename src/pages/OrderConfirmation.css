@@ -1,0 +1,64 @@
+.order-confirm {
+  padding-top: 68px; min-height: 100vh;
+  background: var(--cream-dark);
+  display: flex; align-items: center; justify-content: center;
+  padding-bottom: 80px; padding-left: 20px; padding-right: 20px;
+}
+
+.order-confirm__card {
+  background: var(--cream); border: 1px solid var(--border);
+  padding: 64px 72px; text-align: center;
+  max-width: 560px; width: 100%;
+}
+
+.order-confirm__icon { color: var(--gold); margin-bottom: 20px; display: flex; justify-content: center; }
+.order-confirm__card .section-tag { margin-bottom: 12px; }
+.order-confirm__card h1 { font-size: 52px; margin-bottom: 20px; }
+.order-confirm__sub { font-size: 14px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 36px; }
+
+.order-confirm__number {
+  background: var(--cream-dark); border: 1px solid var(--border);
+  padding: 20px 28px; margin-bottom: 40px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+.order-confirm__number span { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+.order-confirm__number strong { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; letter-spacing: 2px; color: var(--brown-deep); }
+
+/* Progress steps */
+.order-confirm__steps {
+  display: flex; align-items: flex-start; justify-content: center;
+  gap: 0; margin-bottom: 48px; position: relative;
+}
+.order-confirm__steps::before {
+  content: ''; position: absolute; top: 7px; left: 10%; right: 10%;
+  height: 1px; background: var(--border); z-index: 0;
+}
+.order-step { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; position: relative; z-index: 1; }
+.order-step__dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid var(--border); background: var(--cream); transition: all 0.3s;
+}
+.order-step--done .order-step__dot { background: var(--gold); border-color: var(--gold); }
+.order-step--active .order-step__dot { border-color: var(--brown-deep); background: var(--brown-deep); }
+.order-step span { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); text-align: center; line-height: 1.3; }
+.order-step--done span, .order-step--active span { color: var(--brown-deep); font-weight: 500; }
+
+.order-confirm__actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.order-confirm__actions .btn-gold { display: flex; align-items: center; gap: 8px; }
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 768px) {
+  .order-confirm { padding-top: 80px; }
+  .order-confirm__card { padding: 48px 36px; }
+  .order-confirm__card h1 { font-size: 40px; }
+}
+
+@media (max-width: 480px) {
+  .order-confirm { padding-top: 76px; }
+  .order-confirm__card { padding: 40px 20px; }
+  .order-confirm__card h1 { font-size: 32px; }
+  .order-step span { font-size: 9px; }
+  .order-confirm__actions { flex-direction: column; align-items: stretch; }
+  .order-confirm__actions .btn-gold { justify-content: center; }
+  .order-confirm__number { flex-direction: column; align-items: flex-start; }
+}

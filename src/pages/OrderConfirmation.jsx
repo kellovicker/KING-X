@@ -27,7 +27,7 @@ export default function OrderConfirmation() {
 
         <p className="order-confirm__note">
           Please complete your bank transfer if you haven't already.
-          Send proof of payment to <strong>orders@kellox.ng</strong> or
+          Send proof of payment to <strong>kingx20261@gmail.com</strong> or
           reach us on WhatsApp and we'll confirm your order right away.
         </p>
 

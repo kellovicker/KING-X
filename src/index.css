@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
 
 :root {
-  --cream: #faf7f2;
+  /* --cream: #faf7f2;
   --cream-dark: #f0e9df;
   --brown-deep: #2a1f14;
   --brown-mid: #5a4a35;
@@ -15,7 +15,25 @@
   --text-primary: #2a1f14;
   --text-secondary: #7a6a55;
   --text-muted: #a89880;
-  --border: #e0d5c5;
+  --border: #e0d5c5; */
+  
+    --cream: #1a1a1a;
+  --cream-dark: #0f0f0f;
+  /* --brown-deep: #2a1f14; */
+  --brown-deep: #000;
+  /* --brown-mid: #5a4a35; */
+  --brown-mid: #000;
+  --brown-light: #c9a96e;
+  --brown-muted: #b8954e;
+  --brown-pale: #2a2518;
+  --gold: #d4af37;
+  --gold-light: #f0d878;
+  --gold-dark: #aa8c2c;
+  --white: #f5f0e0;
+  --text-primary: #f5f0e0;
+  --text-secondary: #c9a96e;
+  --text-muted: #8a7a50;
+  --border: #3a3528;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

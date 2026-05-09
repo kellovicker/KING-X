@@ -117,7 +117,7 @@ export default function About() {
         <p>Premium pieces waiting to become a part of your story.</p>
         <div className="about-cta__btns">
           <Link to="/shop" className="btn-gold">Shop Now</Link>
-          <Link to="/collections" className="btn-outline-dark">View Collections</Link>
+          <Link to="/collections" className="btn-outline-dark add_color">View Collections</Link>
         </div>
       </section>
 

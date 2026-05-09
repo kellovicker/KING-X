@@ -42,7 +42,7 @@ export default function Home() {
           <p className={`hero__sub ${animating ? 'fade-out' : 'fade-in'}`}>{cur.sub}</p>
           <div className="hero__ctas">
             <Link to="/shop" className="btn-gold">Shop Now</Link>
-            <Link to="/collections" className="btn-outline-light">Explore</Link>
+            <Link to="/collections" className="btn-outline-light add_color">Explore</Link>
           </div>
           <div className="hero__dots">
             {heroSlides.map((_, i) => (

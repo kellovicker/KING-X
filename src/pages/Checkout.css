@@ -23,7 +23,8 @@
   font-size: 26px;
   font-weight: 600;
   letter-spacing: 6px;
-  color: var(--brown-deep);
+  color: var(--text-primary);
+  /* color: var(--brown-deep); */
   margin-bottom: 40px;
 }
 
@@ -83,12 +84,14 @@
 }
 
 .checkout__step--active {
-  color: var(--brown-deep);
+  /* color: var(--brown-deep); */
+  color: var(--text-primary);
   font-weight: 600;
   cursor: default;
 }
 .checkout__step--active .checkout__step-num {
-  background: var(--brown-deep);
+  /* background: var(--brown-deep); */
+  background: var(--text-primary);
   color: var(--cream);
   border-color: var(--brown-deep);
 }
@@ -100,7 +103,8 @@
 .checkout__step--done:hover { color: var(--gold); }
 .checkout__step--done .checkout__step-num {
   background: var(--gold);
-  color: var(--brown-deep);
+  /* color: var(--brown-deep); */
+  color: var(--text-primary);
   border-color: var(--gold);
   font-size: 13px;
 }
@@ -127,7 +131,8 @@
   align-items: center;
   gap: 8px;
   font-weight: 500;
-  color: var(--brown-deep);
+  color: var(--text-primary);
+  /* color: var(--brown-deep); */
 }
 
 /* Mobile mini items */
@@ -174,7 +179,8 @@
 .checkout__form h2 {
   font-size: 28px;
   font-weight: 500;
-  color: var(--brown-deep);
+  /* color: var(--brown-deep); */
+  color: var(--text-primary);
   margin-bottom: 32px;
   line-height: 1.2;
 }
@@ -341,7 +347,12 @@
 }
 .transfer-info p:last-child { border-bottom: none; }
 
-.transfer-info strong { color: var(--brown-deep); font-weight: 500; }
+.transfer-info strong {
+   /* color: var(--brown-deep); */
+   color: var(--text-primary);
+   font-weight: 500;
+
+   }
 
 .transfer-note {
   font-size: 12px !important;
@@ -434,7 +445,8 @@
   font-size: 20px;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-  color: var(--brown-deep);
+  /* color: var(--brown-deep); */
+  color: var(--text-primary);
   padding-top: 14px;
   margin-top: 4px;
 }
@@ -499,7 +511,9 @@
   width: 20px; height: 20px;
   border-radius: 50%;
   background: var(--brown-deep);
-  color: var(--cream);
+  
+  color: var(--text-primary);
+  /* color: var(--cream); */
   font-size: 10px;
   font-weight: 600;
   display: flex;
@@ -520,7 +534,8 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 16px;
   font-weight: 500;
-  color: var(--brown-deep);
+  color: var(--text-primary);
+  /* color: var(--brown-deep); */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -535,7 +550,8 @@
 .checkout__item-price {
   font-size: 14px;
   font-weight: 500;
-  color: var(--brown-mid);
+  /* color: var(--brown-mid); */
+  color: var(--text-primary);
   white-space: nowrap;
   flex-shrink: 0;
 }

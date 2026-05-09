@@ -5,7 +5,10 @@
   padding: 64px 80px 56px; text-align: center;
 }
 .shop__hero .section-tag { margin-bottom: 14px; }
-.shop__hero h1 { font-size: 52px; color: var(--cream); margin-bottom: 12px; }
+.shop__hero h1 { font-size: 52px;
+   /* color: var(--cream); */
+   color: var(--text-primary); 
+   margin-bottom: 12px; }
 .shop__hero-sub { font-size: 13px; color: var(--brown-muted); letter-spacing: 1px; }
 
 /* Layout */
@@ -35,7 +38,10 @@
   cursor: pointer; font-family: 'Jost', sans-serif;
 }
 .filter-btn:hover { color: var(--text-primary); }
-.filter-btn--active { color: var(--brown-deep); font-weight: 500; border-bottom-color: var(--gold); }
+.filter-btn--active {
+   /* color: var(--brown-deep);  */
+   color: var(--text-primary); 
+  font-weight: 500; border-bottom-color: var(--gold); }
 
 /* Main grid */
 .shop__main { padding: 40px 48px; }

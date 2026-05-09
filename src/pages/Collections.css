@@ -30,7 +30,10 @@
   transition: transform 0.3s ease;
 }
 .col-tab:hover { color: var(--text-primary); }
-.col-tab--active { color: var(--brown-deep); font-weight: 500; }
+.col-tab--active { 
+  /* color: var(--brown-deep); */
+  color: var(--text-primary); 
+   font-weight: 500; }
 .col-tab--active::after { transform: scaleX(1); }
 
 /* Hero banner */
@@ -60,8 +63,14 @@
   padding: 56px 80px;
 }
 .collections-page__hero-content .section-tag { margin-bottom: 12px; }
-.collections-page__hero-content h1 { font-size: 52px; color: var(--cream); margin-bottom: 12px; }
-.collections-page__hero-content p { font-size: 14px; color: rgba(255,255,255,0.68); max-width: 400px; }
+.collections-page__hero-content h1 { font-size: 52px; 
+  /* color: var(--cream);  */
+  color: var(--text-primary); 
+  margin-bottom: 12px; }
+.collections-page__hero-content p { font-size: 14px; 
+  /* color: rgba(255,255,255,0.68);  */
+  color: var(--text-primary); 
+  max-width: 400px; }
 
 /* Grid */
 .collections-page__grid { padding: 56px 80px; }

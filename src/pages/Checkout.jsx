@@ -11,8 +11,51 @@ const EJS_PUBLIC   = '1dNrTuEHY6wE3FFyy';
 
 const STEPS = ['Delivery', 'Payment', 'Review'];
 
+const FIELDS = [
+  { key: 'firstName', label: 'First Name',     placeholder: 'John',                      type: 'text',  row: 1 },
+  { key: 'lastName',  label: 'Last Name',      placeholder: 'Doe',                       type: 'text',  row: 1 },
+  { key: 'email',     label: 'Email Address',  placeholder: 'john@example.com',          type: 'email', row: 2 },
+  { key: 'phone',     label: 'Phone Number',   placeholder: '+234 800 000 0000',         type: 'tel',   row: 3 },
+  { key: 'address',   label: 'Street Address', placeholder: '12 Victoria Island, Lagos', type: 'text',  row: 4 },
+  { key: 'city',      label: 'City',           placeholder: 'Lagos',                     type: 'text',  row: 5 },
+  { key: 'state',     label: 'State',          placeholder: 'Lagos State',               type: 'text',  row: 5 },
+];
+
+/* ─────────────────────────────────────────────────────────
+   Field — defined OUTSIDE Checkout so it is never
+   recreated on parent re-render, keeping mobile focus stable
+───────────────────────────────────────────────────────── */
+function Field({ fKey, fields, form, touched, errors, onChange, onBlur }) {
+  const f       = fields.find((x) => x.key === fKey);
+  const hasErr  = touched[fKey] && errors[fKey];
+
+  return (
+    <div className={`form-group ${hasErr ? 'form-group--error' : ''}`}>
+      <label htmlFor={fKey}>
+        {f.label} <span className="required-star">*</span>
+      </label>
+      <input
+        id={fKey}
+        type={f.type}
+        placeholder={f.placeholder}
+        value={form[fKey]}
+        onChange={onChange(fKey)}
+        onBlur={onBlur(fKey)}
+        autoComplete="on"
+      />
+      {hasErr && (
+        <span className="field-error">
+          <FiAlertCircle size={11} /> {errors[fKey]}
+        </span>
+      )}
+    </div>
+  );
+}
+
+/* ───────────────────────────────────────────────────────── */
+
 export default function Checkout() {
-  const navigate = useNavigate();
+  const navigate                    = useNavigate();
   const { items, total, clearCart } = useCart();
 
   const [step,        setStep]        = useState(0);
@@ -35,16 +78,7 @@ export default function Checkout() {
   const grandTotal = total + shipping;
   const fmt        = (n) => `NGN ${n.toLocaleString()}`;
 
-  const fields = [
-    { key: 'firstName', label: 'First Name',     placeholder: 'John',                      type: 'text',  row: 1 },
-    { key: 'lastName',  label: 'Last Name',      placeholder: 'Doe',                       type: 'text',  row: 1 },
-    { key: 'email',     label: 'Email Address',  placeholder: 'john@example.com',          type: 'email', row: 2 },
-    { key: 'phone',     label: 'Phone Number',   placeholder: '+234 800 000 0000',         type: 'tel',   row: 3 },
-    { key: 'address',   label: 'Street Address', placeholder: '12 Victoria Island, Lagos', type: 'text',  row: 4 },
-    { key: 'city',      label: 'City',           placeholder: 'Lagos',                     type: 'text',  row: 5 },
-    { key: 'state',     label: 'State',          placeholder: 'Lagos State',               type: 'text',  row: 5 },
-  ];
-
+  /* ── validation ── */
   const errors = useMemo(() => {
     const e = {};
     if (!form.firstName.trim())  e.firstName = 'First name is required';
@@ -63,8 +97,9 @@ export default function Checkout() {
 
   const deliveryValid = Object.keys(errors).length === 0;
 
+  /* ── handlers ── */
   const handleChange = (key) => (e) => {
-    setForm((prev) => ({ ...prev, [key]: e.target.value }));
+    setForm((prev)    => ({ ...prev, [key]: e.target.value }));
     setTouched((prev) => ({ ...prev, [key]: true }));
   };
 
@@ -73,7 +108,7 @@ export default function Checkout() {
 
   const touchAll = () => {
     const all = {};
-    fields.forEach((f) => { all[f.key] = true; });
+    FIELDS.forEach((f) => { all[f.key] = true; });
     setTouched(all);
   };
 
@@ -82,12 +117,12 @@ export default function Checkout() {
     if (step < STEPS.length - 1) setStep((s) => s + 1);
   };
 
+  /* ── send email ── */
   const handlePlace = async () => {
     setSendError('');
     setSending(true);
 
-    const orderId = `KLX-${Date.now()}`;
-
+    const orderId    = `KLX-${Date.now()}`;
     const orderLines = items
       .map((i) => `${i.name} | Size: ${i.size} | Qty: ${i.qty} | NGN ${(i.price * i.qty).toLocaleString()}`)
       .join(' || ');
@@ -114,52 +149,29 @@ export default function Checkout() {
       clearCart();
       navigate('/order-confirmation');
     } catch (err) {
-      console.error('EmailJS error status:', err.status);
-      console.error('EmailJS error text:', err.text);
-      setSendError(
-        'Could not send your order. Please try again or reach us on WhatsApp.'
-      );
+      console.error('EmailJS error:', err.status, err.text);
+      setSendError('Could not send your order. Please try again or reach us on WhatsApp.');
     } finally {
       setSending(false);
     }
   };
 
-  const showErr = (key) => touched[key] && errors[key];
-  const rowKeys = (rowNum) => fields.filter((f) => f.row === rowNum).map((f) => f.key);
+  /* ── row helper ── */
+  const rowKeys = (rowNum) =>
+    FIELDS.filter((f) => f.row === rowNum).map((f) => f.key);
 
-  const Field = ({ fKey }) => {
-    const f = fields.find((x) => x.key === fKey);
-    return (
-      <div className={`form-group ${showErr(fKey) ? 'form-group--error' : ''}`}>
-        <label htmlFor={fKey}>
-          {f.label} <span className="required-star">*</span>
-        </label>
-        <input
-          id={fKey}
-          type={f.type}
-          placeholder={f.placeholder}
-          value={form[fKey]}
-          onChange={handleChange(fKey)}
-          onBlur={handleBlur(fKey)}
-          autoComplete="on"
-        />
-        {showErr(fKey) && (
-          <span className="field-error">
-            <FiAlertCircle size={11} /> {errors[fKey]}
-          </span>
-        )}
-      </div>
-    );
-  };
+  /* ── shared Field props ── */
+  const fieldProps = { fields: FIELDS, form, touched, errors, onChange: handleChange, onBlur: handleBlur };
 
   return (
     <div className="checkout page-enter">
 
-      {/* ════════════════════ LEFT PANEL ════════════════════ */}
+      {/* ══════════════ LEFT PANEL ══════════════ */}
       <div className="checkout__left">
 
         <div className="checkout__brand">KELLOX</div>
 
+        {/* Steps */}
         <div className="checkout__steps">
           {STEPS.map((s, i) => (
             <button
@@ -179,6 +191,7 @@ export default function Checkout() {
           ))}
         </div>
 
+        {/* Mobile summary toggle */}
         <button
           className="checkout__summary-toggle"
           onClick={() => setSummaryOpen((o) => !o)}
@@ -205,23 +218,30 @@ export default function Checkout() {
           </div>
         )}
 
-        {/* ─────────── STEP 0 : Delivery ─────────── */}
+        {/* ─── STEP 0: Delivery ─── */}
         {step === 0 && (
           <div className="checkout__form">
             <h2>Delivery Details</h2>
+
             <div className="form-row">
-              {rowKeys(1).map((k) => <Field key={k} fKey={k} />)}
+              {rowKeys(1).map((k) => <Field key={k} fKey={k} {...fieldProps} />)}
             </div>
-            {[2, 3, 4].map((r) => rowKeys(r).map((k) => <Field key={k} fKey={k} />))}
+
+            {[2, 3, 4].map((r) =>
+              rowKeys(r).map((k) => <Field key={k} fKey={k} {...fieldProps} />)
+            )}
+
             <div className="form-row">
-              {rowKeys(5).map((k) => <Field key={k} fKey={k} />)}
+              {rowKeys(5).map((k) => <Field key={k} fKey={k} {...fieldProps} />)}
             </div>
+
             <button
               className={`btn-gold checkout__next-btn ${!deliveryValid ? 'checkout__next-btn--disabled' : ''}`}
               onClick={handleNext}
             >
               Continue to Payment
             </button>
+
             {!deliveryValid && Object.keys(touched).length > 0 && (
               <p className="checkout__form-hint">
                 <FiAlertCircle size={13} />
@@ -231,10 +251,11 @@ export default function Checkout() {
           </div>
         )}
 
-        {/* ─────────── STEP 1 : Payment ─────────── */}
+        {/* ─── STEP 1: Payment ─── */}
         {step === 1 && (
           <div className="checkout__form">
             <h2>Payment Method</h2>
+
             <div className="pay-method pay-method--active">
               <span className="pay-method__radio pay-method__radio--checked" />
               <div className="pay-method__label">
@@ -242,28 +263,30 @@ export default function Checkout() {
                 <span className="pay-method__sub">Transfer directly to our account</span>
               </div>
             </div>
+
             <div className="transfer-info">
               <div className="transfer-info__row">
-                <span>Bank: </span>
+                <span>Bank</span>
                 <strong>United Bank of Africa</strong>
               </div>
               <div className="transfer-info__row">
-                <span>Account Name: </span>
+                <span>Account Name</span>
                 <strong>KINGZ EXCLUSIVE CONCEPTS</strong>
               </div>
               <div className="transfer-info__row">
-                <span>Account Number: </span>
+                <span>Account Number</span>
                 <strong className="transfer-info__acct">1030052894</strong>
               </div>
               <div className="transfer-info__row">
-                <span>Amount to Transfer: </span>
+                <span>Amount to Transfer</span>
                 <strong className="transfer-info__amount">{fmt(grandTotal)}</strong>
               </div>
               <p className="transfer-note">
                 Transfer the exact amount above, then click "Review Order".
-              Send proof of payment to{' '}
-                via WhatsApp.</p>
+                Send proof of payment via WhatsApp.
+              </p>
             </div>
+
             <div className="checkout__nav-btns">
               <button className="btn-outline-dark" onClick={() => setStep(0)}>Back</button>
               <button className="btn-gold checkout__next-btn" onClick={handleNext}>
@@ -273,10 +296,11 @@ export default function Checkout() {
           </div>
         )}
 
-        {/* ─────────── STEP 2 : Review ─────────── */}
+        {/* ─── STEP 2: Review ─── */}
         {step === 2 && (
           <div className="checkout__form">
             <h2>Review Order</h2>
+
             <div className="review-block">
               <div className="review-block__header">
                 <span>Delivery</span>
@@ -287,6 +311,7 @@ export default function Checkout() {
               <p className="review-block__line">{form.email}</p>
               <p className="review-block__line">{form.phone}</p>
             </div>
+
             <div className="review-block">
               <div className="review-block__header">
                 <span>Payment</span>
@@ -297,6 +322,7 @@ export default function Checkout() {
                 United Bank of Africa · 1030052894
               </p>
             </div>
+
             <div className="checkout__totals">
               <div className="checkout__total-row">
                 <span>Subtotal</span><span>{fmt(total)}</span>
@@ -328,9 +354,9 @@ export default function Checkout() {
               disabled={sending}
             >
               {sending ? (
-                <><span className="checkout__spinner" />Sending Order…</>
+                <><span className="checkout__spinner" /> Sending Order…</>
               ) : (
-                <><FiLock size={14} />Place Order</>
+                <><FiLock size={14} /> Place Order</>
               )}
             </button>
 
@@ -345,7 +371,7 @@ export default function Checkout() {
         )}
       </div>
 
-      {/* ════════════════ RIGHT PANEL (desktop) ════════════════ */}
+      {/* ══════════════ RIGHT PANEL ══════════════ */}
       <div className="checkout__right">
         <h3>Order Summary</h3>
         <div className="checkout__items">

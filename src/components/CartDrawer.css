@@ -27,7 +27,9 @@
   color: var(--text-muted); margin-top: 4px;
 }
 .cart-drawer__close {
-  color: var(--brown-mid); transition: color 0.2s; padding: 4px;
+  /* color: var(--brown-mid);  */
+   color: var(--text-primary);
+  transition: color 0.2s; padding: 4px;
   background: none; border: none; cursor: pointer; display: flex;
 }
 .cart-drawer__close:hover { color: var(--brown-deep); }
@@ -52,7 +54,10 @@
   font-size: 17px; font-weight: 500; margin-bottom: 4px;
 }
 .cart-item__meta { font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 8px; }
-.cart-item__price { font-size: 14px; font-weight: 500; color: var(--brown-mid); margin-bottom: 12px; }
+.cart-item__price { font-size: 14px; font-weight: 500;
+   /* color: var(--brown-mid); */
+   color: var(--text-primary);
+   margin-bottom: 12px; }
 .cart-item__actions { display: flex; align-items: center; justify-content: space-between; }
 
 .qty-control {
@@ -60,7 +65,9 @@
   border: 1px solid var(--border); padding: 6px 12px;
 }
 .qty-control button {
-  color: var(--brown-mid); transition: color 0.2s;
+  /* color: var(--brown-mid); */
+   color: var(--text-primary);
+   transition: color 0.2s;
   display: flex; background: none; border: none; cursor: pointer;
 }
 .qty-control button:hover { color: var(--brown-deep); }

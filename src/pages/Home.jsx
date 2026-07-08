@@ -42,7 +42,7 @@ export default function Home() {
           <p className={`hero__sub ${animating ? 'fade-out' : 'fade-in'}`}>{cur.sub}</p>
           <div className="hero__ctas">
             <Link to="/shop" className="btn-gold">Shop Now</Link>
-            <Link to="/collections" className="btn-outline-light add_color">Explore</Link>
+            <Link to="/collections" className="btn-outline-light">Explore</Link>
           </div>
           <div className="hero__dots">
             {heroSlides.map((_, i) => (
@@ -70,8 +70,8 @@ export default function Home() {
       {/* ── Marquee ──────────────────────────────── */}
       <div className="marquee" aria-hidden="true">
         <div className="marquee__track">
-          {['Premium Fabrics','·','Refined Cuts','·','Timeless Style','·','New Arrivals 2026','·','Made to Last','·',
-            'Premium Fabrics','·','Refined Cuts','·','Timeless Style','·','New Arrivals 2026','·','Made to Last'].map((t,i) => (
+          {['Premium Fabrics','·','Refined Cuts','·','Timeless Style','·','New Arrivals 2025','·','Made to Last','·',
+            'Premium Fabrics','·','Refined Cuts','·','Timeless Style','·','New Arrivals 2025','·','Made to Last'].map((t,i) => (
             <span key={i}>{t}</span>
           ))}
         </div>
@@ -120,14 +120,14 @@ export default function Home() {
         <div className="about-section__img">
           <img
             src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=80"
-            alt="About KING X"
+            alt="About Kellox"
           />
         </div>
         <div className="about-section__content">
           <p className="section-tag">Our Story</p>
           <h2>Crafted with<br /><em>intention.</em></h2>
           <p className="about-section__text">
-            KING X was born from a belief that great clothing should feel as good as it looks.
+            Kellox was born from a belief that great clothing should feel as good as it looks.
             Every piece is thoughtfully made — premium fabrics, considered cuts, enduring style.
             We believe in dressing with purpose, not trend.
           </p>
@@ -147,7 +147,7 @@ export default function Home() {
         <p className="newsletter__sub">Early access, exclusive drops, and styling notes — straight to your inbox.</p>
         <form className="newsletter__form" onSubmit={e => e.preventDefault()}>
           <input type="email" placeholder="Your email address" />
-          <button type="submit" className="btn-gol">Subscribe</button>
+          <button type="submit" className="btn-gold">Subscribe</button>
         </form>
       </section>
 

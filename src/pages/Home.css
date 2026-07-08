@@ -3,7 +3,7 @@
 /* ── Hero ──────────────────────────────────── */
 .hero {
   display: grid;
-  grid-template-columns: 2fr 3fr; /* 40% / 60% */
+  grid-template-columns: 1fr 1fr;
   min-height: calc(100vh - 68px);
 }
 
@@ -14,17 +14,12 @@
   flex-direction: column;
   justify-content: center;
 }
-.add_color{
-  color: var(--text-primary) !important;
-  border: 1px solid  var(--text-primary) !important;
-  border-radius: 8px;
-}
+
 .hero__tag { margin-bottom: 22px; }
 
 .hero__title {
   font-size: clamp(40px, 4.5vw, 64px);
-  /* color: var(--cream); */
-  color: var(--text-primary); 
+  color: var(--cream);
   margin-bottom: 24px;
   line-height: 1.05;
 }
@@ -66,14 +61,13 @@
   inset: 0;
 }
 
-/* .hero__badge {
+.hero__badge {
   position: absolute;
   top: 28px; right: 28px;
   background: var(--gold);
-  color: white !important;
   padding: 8px 16px;
   z-index: 2;
-} */
+}
 
 .hero__slide-label {
   position: absolute;
@@ -131,7 +125,7 @@
   font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  color: var(--brown-deep);
   margin: 0 22px;
   font-weight: 500;
 }
@@ -148,11 +142,7 @@
   margin-bottom: 48px;
 }
 .home-section__header h2 { font-size: 36px; margin-top: 8px; }
-.home-section__header--light h2 {
-  color: var(--text-primary) !important; 
-  /* color: var(--cream); */
-  
- }
+.home-section__header--light h2 { color: var(--cream); }
 
 .view-all {
   display: flex; align-items: center; gap: 6px;
@@ -179,7 +169,6 @@
   padding: 36px;
   overflow: hidden;
   text-decoration: none;
-  border-radius: 15px;
   transition: transform 0.3s ease;
 }
 .collection-card:hover { transform: scale(1.012); }
@@ -204,15 +193,9 @@
 .collection-card__inner .section-tag { margin-bottom: 8px; }
 .collection-card__inner h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 34px; font-weight: 500;
-   /* color: var(--cream); */
-  color: var(--text-primary);
-   margin-bottom: 8px;
+  font-size: 34px; font-weight: 500; color: var(--cream); margin-bottom: 8px;
 }
-.collection-card__desc { font-size: 13px;
-   /* color: rgba(255,255,255,0.65);  */
-  color: var(--text-primary);
-  margin-bottom: 18px; }
+.collection-card__desc { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 18px; }
 .collection-card__link {
   display: flex; align-items: center; gap: 6px;
   font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold);
@@ -221,25 +204,17 @@
 .collection-card:hover .collection-card__link { gap: 10px; }
 
 /* ── About ─────────────────────────────────── */
-.about-section { 
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  min-height: 540px; 
-}
+.about-section { display: grid; grid-template-columns: 1fr 1fr; min-height: 540px; }
 
 .about-section__img {
-  width: 100%;
   overflow: hidden;
   position: relative;
-  background: var(--brown-deep);
 }
 .about-section__img img {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
-  border-top-right-radius: 35px;
-  border-bottom-right-radius: 35px;
 }
 
 .about-section__content {
@@ -248,10 +223,7 @@
   background: var(--brown-deep);
 }
 .about-section__content .section-tag { margin-bottom: 16px; }
-.about-section__content h2 { font-size: 42px;
-   /* color: var(--cream); */
-  color: var(--text-primary);
-   margin-bottom: 24px; }
+.about-section__content h2 { font-size: 42px; color: var(--cream); margin-bottom: 24px; }
 .about-section__content h2 em { color: var(--gold); font-style: italic; }
 .about-section__text { font-size: 14px; color: var(--brown-muted); line-height: 1.9; margin-bottom: 36px; }
 
@@ -280,29 +252,15 @@
 .newsletter__form input {
   flex: 1;
   padding: 16px 20px;
-  border: 1px solid var(--text-secondary);
+  border: 1px solid var(--brown-pale);
   border-right: none;
   background: transparent;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
   font-size: 14px; color: var(--text-primary); outline: none;
   font-family: 'Jost', sans-serif;
   transition: border-color 0.2s;
 }
 .newsletter__form input:focus { border-color: var(--gold); }
-.newsletter__form .btn-gol { 
-  padding: 16px 32px; 
-  border-top-right-radius: 8px; 
-  border-bottom-right-radius: 8px; 
-
-  background: var(--gold);
-  color: var(--brown-deep);
-  /* color: var(--text-secondary); */
-  font-size: 16px;
-  /* padding: 14px 36px; */
-  font-weight: 500;
-  transition: var(--transition);
-}
+.newsletter__form .btn-gold { padding: 16px 32px; white-space: nowrap; flex-shrink: 0; }
 
 /* ── Responsive ─────────────────────────────── */
 @media (max-width: 1280px) {

@@ -150,7 +150,7 @@ export const collections = [
 
 export const heroSlides = [
   {
-    tag: 'New Season · 2026',
+    tag: 'New Season · 2025',
     title: ['Dressed', 'for the', 'Refined.'],
     sub: 'Premium clothing crafted for those who know exactly who they are.',
     label: 'Linen Overcoat',

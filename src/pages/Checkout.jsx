@@ -4,7 +4,6 @@ import { FiLock, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { useCart } from '../context/CartContext';
 import './Checkout.css';
 
-<<<<<<< HEAD
 /* ─────────────────────────────────────────────────────────
    EmailJS credentials
    EJS_SERVICE      — same service for both emails
@@ -62,10 +61,6 @@ function Field({ fKey, fields, form, touched, errors, onChange, onBlur }) {
 
 /* ───────────────────────────────────────────────────────── */
 
-=======
-const STEPS = ['Delivery', 'Payment', 'Review'];
-
->>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
 export default function Checkout() {
   const navigate = useNavigate();
   const { items, total, clearCart } = useCart();
@@ -89,7 +84,6 @@ export default function Checkout() {
     if (step < STEPS.length - 1) setStep(s => s + 1);
   };
 
-<<<<<<< HEAD
   /* ── place order: send both emails ── */
   const handlePlace = async () => {
     setSendError('');
@@ -160,13 +154,6 @@ export default function Checkout() {
   const rowKeys    = (rowNum) => FIELDS.filter((f) => f.row === rowNum).map((f) => f.key);
   const fieldProps = { fields: FIELDS, form, touched, errors, onChange: handleChange, onBlur: handleBlur };
 
-=======
-  const handlePlace = () => {
-    clearCart();
-    navigate('/order-confirmation');
-  };
-
->>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
   return (
     <div className="checkout page-enter">
       <div className="checkout__left">
@@ -236,12 +223,9 @@ export default function Checkout() {
               <label>Address</label>
               <input placeholder="12 Victoria Island, Lagos" value={form.address} onChange={set('address')} />
             </div>
-<<<<<<< HEAD
             {[2, 3, 4].map((r) =>
               rowKeys(r).map((k) => <Field key={k} fKey={k} {...fieldProps} />)
             )}
-=======
->>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
             <div className="form-row">
               <div className="form-group">
                 <label>City</label>

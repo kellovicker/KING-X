@@ -1,25 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-<<<<<<< HEAD
 import { FiSearch, FiShoppingBag, FiMenu, FiX } from 'react-icons/fi';
-=======
-import { FiSearch, FiHeart, FiShoppingBag } from 'react-icons/fi';
->>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
 import { useCart } from '../context/CartContext';
 import './Navbar.css';
 
 export default function Navbar() {
   const { count, setIsOpen } = useCart();
-<<<<<<< HEAD
   const [scrolled, setScrolled]     = useState(false);
   const [searchOpen, setSearchOpen]  = useState(false);
   const [menuOpen, setMenuOpen]      = useState(false);
   const [searchVal, setSearchVal]    = useState('');
-=======
-  const [scrolled, setScrolled]    = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchVal, setSearchVal]   = useState('');
->>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
   const location = useLocation();
 
   useEffect(() => {
@@ -34,7 +24,6 @@ export default function Navbar() {
     setSearchVal('');
   }, [location]);
 
-<<<<<<< HEAD
   /* lock body scroll when drawer open */
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
@@ -47,8 +36,6 @@ export default function Navbar() {
     { to: '/about',       label: 'About' },
   ];
 
-=======
->>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
   return (
     <>
       <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
@@ -59,7 +46,6 @@ export default function Navbar() {
           <NavLink to="/about"       className={({ isActive }) => isActive ? 'nav-link nav-link--active' : 'nav-link'}>About</NavLink>
         </div>
 
-<<<<<<< HEAD
           {/* ── Logo (left) ── */}
           <Link to="/" className="navbar__logo-wrap">
             <img src="/logo.png" alt="Kellox" className="navbar__logo-img" />
@@ -111,10 +97,6 @@ export default function Navbar() {
               {menuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
             </button>
           </div>
-=======
-        {/* Centered logo */}
-        <Link to="/" className="navbar__logo">KELLOX</Link>
->>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
 
         {/* Right icons */}
         <div className="navbar__right">
@@ -131,7 +113,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-<<<<<<< HEAD
       {/* ── Mobile drawer ── */}
       <div
         className={`nav-overlay ${menuOpen ? 'nav-overlay--open' : ''}`}
@@ -161,9 +142,6 @@ export default function Navbar() {
       </div>
 
       {/* ── Search bar ── */}
-=======
-      {/* Search dropdown */}
->>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
       <div className={`search-bar ${searchOpen ? 'search-bar--open' : ''}`}>
         <input
           type="text"

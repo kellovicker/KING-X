@@ -261,8 +261,13 @@
   border-top-left-radius: 10px; 
   border-bottom-left-radius: 10px;
 }
+<<<<<<< HEAD
 .newsletter__form input:focus { border-color: var(--gold);}
 .newsletter__form .btn-gold { padding: 16px 32px; white-space: nowrap; flex-shrink: 0; border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
+=======
+.newsletter__form input:focus { border-color: var(--gold); }
+.newsletter__form .btn-gold { padding: 16px 32px; white-space: nowrap; flex-shrink: 0; }
+>>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
 
 /* ── Responsive ─────────────────────────────── */
 @media (max-width: 1280px) {

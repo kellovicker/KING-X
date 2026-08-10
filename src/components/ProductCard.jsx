@@ -38,7 +38,7 @@ export default function ProductCard({ product }) {
           onClick={handleAdd}
         >
           <FiShoppingBag size={14} />
-          <span>{added ? 'Added!' : 'Add To Cart'}</span>
+          <span>{added ? 'Added!' : 'Quick Add'}</span>
         </button>
       </div>
       <div className="product-card__info">

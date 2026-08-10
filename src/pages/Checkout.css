@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ══════════════════════════════════════════
    CHECKOUT PAGE
 ══════════════════════════════════════════ */
@@ -25,8 +26,27 @@
   letter-spacing: 6px;
   color: var(--text-color);
   margin-bottom: 40px;
+=======
+.checkout { padding-top: 68px; min-height: 100vh; background: var(--cream-dark); }
+
+.checkout-empty {
+  padding-top: 140px; text-align: center; min-height: 60vh;
+  display: flex; flex-direction: column; align-items: center; gap: 24px; justify-content: center;
 }
 
+.checkout__container { display: grid; grid-template-columns: 1fr 420px; min-height: calc(100vh - 68px); }
+
+/* Left */
+.checkout__left { padding: 48px 64px; background: var(--cream); border-right: 1px solid var(--border); }
+.checkout__back {
+  display: flex; align-items: center; gap: 8px; font-size: 12px;
+  letter-spacing: 1px; color: var(--text-muted); margin-bottom: 36px; transition: color 0.2s;
+>>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
+}
+.checkout__back:hover { color: var(--gold); }
+.checkout__logo { font-family: 'Cormorant Garamond', serif; font-size: 28px; letter-spacing: 6px; font-weight: 600; color: var(--brown-deep); margin-bottom: 36px; }
+
+<<<<<<< HEAD
 /* ── Steps ────────────────────────────────── */
 .checkout__steps {
   display: flex;
@@ -34,8 +54,20 @@
   margin-bottom: 36px;
   padding-bottom: 36px;
   border-bottom: 1px solid var(--border);
+=======
+/* Steps */
+.checkout__steps { display: flex; gap: 32px; margin-bottom: 48px; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+.checkout__step { display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+.checkout__step span:first-child {
+  width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0;
+>>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
 }
+.checkout__step--active { color: var(--brown-deep); font-weight: 500; }
+.checkout__step--active span:first-child { background: var(--brown-deep); color: var(--cream); border-color: var(--brown-deep); }
+.checkout__step--done span:first-child { background: var(--gold); color: var(--brown-deep); border-color: var(--gold); }
 
+<<<<<<< HEAD
 .checkout__step {
   display: flex;
   align-items: center;
@@ -192,6 +224,16 @@
   text-transform: uppercase;
   color: var(--text-muted);
   font-weight: 500;
+=======
+/* Form */
+.checkout__form h2 { font-size: 26px; margin-bottom: 32px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.form-field label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); font-weight: 500; }
+.form-field input {
+  padding: 13px 16px; border: 1px solid var(--border); background: var(--cream);
+  font-size: 14px; color: var(--text-primary); outline: none; transition: border-color 0.2s;
+>>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
   font-family: 'Jost', sans-serif;
   display: flex;
   align-items: center;
@@ -204,7 +246,12 @@
   font-size: 13px;
   line-height: 1;
 }
+.form-field input:focus { border-color: var(--gold); }
+.form-field input.error { border-color: #c0392b; }
+.field-error { font-size: 11px; color: #c0392b; }
+.checkout__next { margin-top: 8px; padding: 16px 48px; font-size: 11px; letter-spacing: 2.5px; }
 
+<<<<<<< HEAD
 .form-group input {
   padding: 14px 16px;
   border: 1px solid var(--text-color);
@@ -605,4 +652,77 @@
   .checkout__left { padding: 24px 14px 48px; }
   .checkout__step { font-size: 9px; }
   .checkout__step + .checkout__step::before { width: 12px; margin: 0 6px; }
+=======
+/* Payment */
+.payment-methods { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.payment-method {
+  display: flex; align-items: center; gap: 14px; padding: 16px 20px;
+  border: 1px solid var(--border); font-size: 14px; color: var(--text-primary);
+  transition: all 0.2s; text-align: left; background: none; cursor: pointer; font-family: 'Jost', sans-serif; width: 100%;
+}
+.payment-method:hover { border-color: var(--brown-pale); }
+.payment-method--active { border-color: var(--gold); background: rgba(201,169,110,0.05); }
+.payment-method svg { color: var(--gold); flex-shrink: 0; }
+.payment-method span:nth-child(2) { flex: 1; }
+.payment-method__check { width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--border); display: inline-block; flex-shrink: 0; transition: all 0.2s; }
+.payment-method__check--active { background: var(--gold); border-color: var(--gold); }
+
+.card-form { margin-bottom: 32px; }
+
+.transfer-info { background: var(--cream-dark); border: 1px solid var(--border); padding: 24px; margin-bottom: 32px; }
+.transfer-info__row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.transfer-info__row span { color: var(--text-muted); }
+.transfer-info__row:last-of-type { border-bottom: none; }
+.transfer-info__note { font-size: 12px; color: var(--text-muted); margin-top: 14px; font-style: italic; }
+
+.paystack-info { background: var(--cream-dark); border: 1px solid var(--border); padding: 24px; margin-bottom: 32px; font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+.checkout__step2-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+
+/* Right summary */
+.checkout__right { padding: 48px 40px; background: var(--cream-dark); }
+.checkout__right h3 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 28px; font-family: 'Jost', sans-serif; font-weight: 500; }
+.checkout__items { border-top: 1px solid var(--border); margin-bottom: 28px; }
+.checkout__item { display: flex; align-items: center; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+.checkout__item-img { width: 64px; height: 80px; flex-shrink: 0; border-radius: 2px; }
+.checkout__item-info { flex: 1; min-width: 0; }
+.checkout__item-name { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 500; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.checkout__item-meta { font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px; }
+.checkout__item-price { font-size: 14px; font-weight: 500; color: var(--brown-mid); white-space: nowrap; }
+.checkout__totals { border-top: 1px solid var(--border); padding-top: 20px; }
+.checkout__total-row { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; }
+.checkout__total-row--grand { font-size: 18px; font-family: 'Cormorant Garamond', serif; font-weight: 500; color: var(--brown-deep); padding-top: 12px; border-top: 1px solid var(--border); margin-top: 8px; }
+.checkout__free-ship { font-size: 11px; color: var(--gold); margin-bottom: 12px; }
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 1100px) {
+  .checkout__container { grid-template-columns: 1fr 360px; }
+  .checkout__left { padding: 40px 40px; }
+  .checkout__right { padding: 40px 28px; }
+}
+
+@media (max-width: 900px) {
+  .checkout__container { grid-template-columns: 1fr; }
+  .checkout__right { order: -1; border-bottom: 1px solid var(--border); padding: 32px 24px; }
+  .checkout__left { padding: 36px 24px; border-right: none; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .checkout__step2-actions { flex-direction: column-reverse; align-items: stretch; }
+  .checkout__step2-actions button { text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .checkout { padding-top: 60px; }
+  .checkout__left { padding: 28px 16px; }
+  .checkout__right { padding: 24px 16px; }
+  .checkout__logo { font-size: 22px; letter-spacing: 5px; }
+  .checkout__steps { gap: 20px; }
+  .checkout__step { font-size: 10px; }
+  .checkout__form h2 { font-size: 22px; margin-bottom: 24px; }
+}
+
+/* Real product images in checkout */
+.checkout__item-img {
+  object-fit: cover;
+  object-position: center top;
+>>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
 }

@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer__top">
         <div className="footer__brand">
-          <div className="footer__logo">KING X</div>
+          <div className="footer__logo">KELLOX</div>
           <p className="footer__tagline">You're cooler than you think.</p>
           <div className="footer__socials">
             <a href="#" aria-label="Instagram"><FiInstagram size={18} /></a>

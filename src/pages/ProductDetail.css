@@ -53,9 +53,7 @@
 .product-detail__info .section-tag { margin-bottom: 12px; }
 .product-detail__name { font-size: 44px; font-weight: 500; margin-bottom: 16px; line-height: 1.1; }
 .product-detail__price {
-  font-size: 24px; font-weight: 500; 
-  /* color: var(--brown-mid); */
-  color: var(--text-primary);
+  font-size: 24px; font-weight: 500; color: var(--brown-mid);
   margin-bottom: 24px; font-family: 'Cormorant Garamond', serif;
 }
 .product-detail__desc {
@@ -90,10 +88,7 @@
   margin-top: 14px; border: 1px solid var(--border); width: fit-content;
 }
 .qty-row button {
-  width: 44px; height: 44px; font-size: 18px; 
-  /* color: var(--brown-mid); */
-  color: var(--text-primary);
-
+  width: 44px; height: 44px; font-size: 18px; color: var(--brown-mid);
   transition: all 0.2s; display: flex; align-items: center; justify-content: center;
   background: none; border: none; cursor: pointer;
 }

@@ -1,35 +1,40 @@
+import blindfolded1 from '../Assets/blindfolded1.jpeg'
+import blindfolded2 from '../Assets/blindfolded3.jpeg'
+import blindfolded from '../Assets/blindfolded.jpeg'
+import Ascension1 from '../Assets/Ascension1.jpeg'
+import Ascension2 from '../Assets/Ascension2.jpeg'
+import Ascension3 from '../Assets/Ascension3.PNG'
+
 export const products = [
   {
     id: 1,
-    name: 'Linen Overcoat',
-    category: 'Outerwear',
+    name: 'blindfolded king Tee',
+    category: 'shirt',
     collection: 'men',
-    price: 48000,
+    price: 55000,
     tag: 'New',
     color: '#e8dfd0',
-    image: 'https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600&q=80',
+    image: blindfolded1,
     images: [
-      'https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=800&q=80',
-      'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80',
-      'https://images.unsplash.com/photo-1520975954732-35dd22299614?w=800&q=80',
+      blindfolded2,
+      blindfolded,
     ],
-    desc: 'A refined linen overcoat with a relaxed silhouette. Breathable and effortlessly elegant. Dry clean only.',
+    desc: 'a statement piece built around quiet confidence, focus, and self-belief.',
   },
   {
     id: 2,
-    name: 'Tailored Trousers',
-    category: 'Bottoms',
+    name: 'The Ascension (Gold Beanie)',
+    category: 'cap',
     collection: 'men',
-    price: 27500,
-    tag: null,
+    price: 30000,
+    tag: 'new',
     color: '#ddd5c8',
-    image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80',
+    image: Ascension1,
     images: [
-      'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80',
-      'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=800&q=80',
-      'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=800&q=80',
+      Ascension2,
+      Ascension3,
     ],
-    desc: 'Precision-cut tailored trousers in a premium wool blend. A wardrobe cornerstone.',
+    desc: 'A symbol of elevation, protection, and divine strength.',
   },
   {
     id: 3,
@@ -150,7 +155,7 @@ export const collections = [
 
 export const heroSlides = [
   {
-    tag: 'New Season · 2026',
+    tag: 'New Season · 2025',
     title: ['Dressed', 'for the', 'Refined.'],
     sub: 'Premium clothing crafted for those who know exactly who they are.',
     label: 'Linen Overcoat',

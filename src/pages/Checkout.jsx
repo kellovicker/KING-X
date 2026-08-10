@@ -5,9 +5,17 @@ import emailjs from '@emailjs/browser';
 import { useCart } from '../context/CartContext';
 import './Checkout.css';
 
-const EJS_SERVICE  = 'service_3yrp4ut';
-const EJS_TEMPLATE = 'template_92xxf3a';
-const EJS_PUBLIC   = '1dNrTuEHY6wE3FFyy';
+/* ─────────────────────────────────────────────────────────
+   EmailJS credentials
+   EJS_SERVICE      — same service for both emails
+   EJS_TEMPLATE_BIZ — template sent TO King-X (order alert)
+   EJS_TEMPLATE_CUS — template sent TO the customer (confirmation)
+   EJS_PUBLIC       — your public key
+───────────────────────────────────────────────────────── */
+const EJS_SERVICE      = 'service_3yrp4ut';
+const EJS_TEMPLATE_BIZ = 'template_92xxf3a';   // ← your existing template (notify King-X)
+const EJS_TEMPLATE_CUS = 'template_CUSTOMER';  // ← new template (confirm to customer)
+const EJS_PUBLIC       = '1dNrTuEHY6wE3FFyy';
 
 const STEPS = ['Delivery', 'Payment', 'Review'];
 
@@ -22,12 +30,12 @@ const FIELDS = [
 ];
 
 /* ─────────────────────────────────────────────────────────
-   Field — defined OUTSIDE Checkout so it is never
-   recreated on parent re-render, keeping mobile focus stable
+   Field — outside Checkout to prevent remount on re-render
+   (fixes mobile keyboard losing focus on every keystroke)
 ───────────────────────────────────────────────────────── */
 function Field({ fKey, fields, form, touched, errors, onChange, onBlur }) {
-  const f       = fields.find((x) => x.key === fKey);
-  const hasErr  = touched[fKey] && errors[fKey];
+  const f      = fields.find((x) => x.key === fKey);
+  const hasErr = touched[fKey] && errors[fKey];
 
   return (
     <div className={`form-group ${hasErr ? 'form-group--error' : ''}`}>
@@ -117,17 +125,18 @@ export default function Checkout() {
     if (step < STEPS.length - 1) setStep((s) => s + 1);
   };
 
-  /* ── send email ── */
+  /* ── place order: send both emails ── */
   const handlePlace = async () => {
     setSendError('');
     setSending(true);
 
-    const orderId    = `KLX-${Date.now()}`;
+    const orderId    = `KX-${Date.now()}`;
     const orderLines = items
       .map((i) => `${i.name} | Size: ${i.size} | Qty: ${i.qty} | NGN ${(i.price * i.qty).toLocaleString()}`)
       .join(' || ');
 
-    const params = {
+    /* shared params used in both templates */
+    const sharedParams = {
       order_id         : orderId,
       customer_name    : `${form.firstName} ${form.lastName}`,
       customer_email   : form.email,
@@ -144,8 +153,34 @@ export default function Checkout() {
                          }),
     };
 
+    /*
+      bizParams  → sent to King-X inbox
+      "to_email" must match the "To Email" field in your
+       EJS_TEMPLATE_BIZ template on emailjs.com
+    */
+    const bizParams = {
+      ...sharedParams,
+      to_email : 'kingzexclusiveconcept@gmail.com',  // ← King-X receives this
+      to_name  : 'King-X Team',
+    };
+
+    /*
+      cusParams  → sent to the customer
+      "to_email" must match the "To Email" field in your
+       EJS_TEMPLATE_CUS template on emailjs.com
+    */
+    const cusParams = {
+      ...sharedParams,
+      to_email : form.email,            // ← customer receives this
+      to_name  : `${form.firstName} ${form.lastName}`,
+    };
+
     try {
-      await emailjs.send(EJS_SERVICE, EJS_TEMPLATE, params, { publicKey: EJS_PUBLIC });
+      /* fire both emails in parallel */
+      await Promise.all([
+        emailjs.send(EJS_SERVICE, EJS_TEMPLATE_BIZ, bizParams, { publicKey: EJS_PUBLIC }),
+        emailjs.send(EJS_SERVICE, EJS_TEMPLATE_CUS, cusParams, { publicKey: EJS_PUBLIC }),
+      ]);
       clearCart();
       navigate('/order-confirmation');
     } catch (err) {
@@ -156,11 +191,8 @@ export default function Checkout() {
     }
   };
 
-  /* ── row helper ── */
-  const rowKeys = (rowNum) =>
-    FIELDS.filter((f) => f.row === rowNum).map((f) => f.key);
-
-  /* ── shared Field props ── */
+  /* ── helpers ── */
+  const rowKeys    = (rowNum) => FIELDS.filter((f) => f.row === rowNum).map((f) => f.key);
   const fieldProps = { fields: FIELDS, form, touched, errors, onChange: handleChange, onBlur: handleBlur };
 
   return (
@@ -226,11 +258,9 @@ export default function Checkout() {
             <div className="form-row">
               {rowKeys(1).map((k) => <Field key={k} fKey={k} {...fieldProps} />)}
             </div>
-
             {[2, 3, 4].map((r) =>
               rowKeys(r).map((k) => <Field key={k} fKey={k} {...fieldProps} />)
             )}
-
             <div className="form-row">
               {rowKeys(5).map((k) => <Field key={k} fKey={k} {...fieldProps} />)}
             </div>

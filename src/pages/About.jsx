@@ -25,7 +25,7 @@ export default function About() {
           <p className="section-tag">Our Story</p>
           <h1>Dressed with<br /><em>Purpose.</em></h1>
           <p className="about-hero__sub">
-            KING X was born in Port Harcourt from a simple conviction — that great clothing should feel
+            Kellox was born in Lagos from a simple conviction — that great clothing should feel
             as good as it looks, and last far longer than the season.
           </p>
           <Link to="/shop" className="btn-gold">
@@ -35,14 +35,14 @@ export default function About() {
         <div className="about-hero__visual">
           <img
             src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=80"
-            alt="KING X fashion"
+            alt="Kellox fashion"
           />
         </div>
       </section>
 
       {/* Stats */}
       <section className="about-stats">
-        {[['2019','Founded in Port Harcourt'],['500+','Pieces in catalogue'],['50k+','Happy customers'],['12','Countries shipped to']].map(([num, label]) => (
+        {[['2019','Founded in Lagos'],['500+','Pieces in catalogue'],['50k+','Happy customers'],['12','Countries shipped to']].map(([num, label]) => (
           <div key={label} className="about-stat">
             <span>{num}</span>
             <p>{label}</p>
@@ -55,19 +55,19 @@ export default function About() {
         <div className="about-story__img">
           <img
             src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=80"
-            alt="KING X craftsmanship"
+            alt="Kellox craftsmanship"
           />
         </div>
         <div className="about-story__text">
           <p className="section-tag">The Beginning</p>
-          <h2>From Port Harcourt,<br />to the World.</h2>
+          <h2>From Lagos,<br />to the World.</h2>
           <p>
-            What began as a small studio in Port Harcourt has grown into one of Nigeria's most
+            What began as a small studio in Lagos has grown into one of Nigeria's most
             respected premium clothing labels. We started because we were frustrated with
             the compromise between quality and style — so we chose not to compromise.
           </p>
           <p>
-            Every KING X garment is the result of meticulous sourcing, pattern-making,
+            Every Kellox garment is the result of meticulous sourcing, pattern-making,
             and finishing. We work with artisan manufacturers who share our obsession
             with the details that most people never notice — but always feel.
           </p>
@@ -117,7 +117,7 @@ export default function About() {
         <p>Premium pieces waiting to become a part of your story.</p>
         <div className="about-cta__btns">
           <Link to="/shop" className="btn-gold">Shop Now</Link>
-          <Link to="/collections" className="btn-outline-dark add_color">View Collections</Link>
+          <Link to="/collections" className="btn-outline-dark">View Collections</Link>
         </div>
       </section>
 

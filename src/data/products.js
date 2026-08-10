@@ -4,6 +4,9 @@ import blindfolded from '../Assets/blindfolded.jpeg'
 import Ascension1 from '../Assets/Ascension1.jpeg'
 import Ascension2 from '../Assets/Ascension2.jpeg'
 import Ascension3 from '../Assets/Ascension3.PNG'
+import Tracksuitted1 from '../Assets/Tracksuitted1.jpeg'
+import Tracksuitted2 from '../Assets/Tracksuitted2.jpeg'
+import Tracksuitted3 from '../Assets/Tracksuitted3.jpeg'
 
 export const products = [
   {
@@ -38,17 +41,16 @@ export const products = [
   },
   {
     id: 3,
-    name: 'Silk Blend Shirt',
-    category: 'Tops',
+    name: 'KING X Sovereign ',
+    category: 'Tracksuit',
     collection: 'men',
-    price: 19000,
+    price: 80000,
     tag: 'New',
     color: '#e4dbd2',
-    image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&q=80',
+    image: Tracksuitted1,
     images: [
-      'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&q=80',
-      'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800&q=80',
-      'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&q=80',
+      Tracksuitted2,
+      Tracksuitted3,
     ],
     desc: 'Luxuriously soft silk-blend shirt with a relaxed fit. Pairs perfectly with tailored or casual pieces.',
   },
@@ -135,46 +137,47 @@ export const products = [
 ];
 
 export const collections = [
+
   {
     id: 'men',
     name: 'Men',
-    label: 'Classic Range',
-    desc: 'Refined essentials for the modern man',
+    label: 'blindfolded king Tee',
+    desc: 'a statement piece built around quiet confidence, focus, and self-belief.',
     bg: '#3d2e1e',
-    image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=800&q=80',
+    image: blindfolded1,
   },
   {
     id: 'women',
     name: 'Women',
-    label: 'Evening Edit',
-    desc: 'Elegant pieces for every occasion',
+    label: 'KING X Sovereign',
+    desc: 'Luxuriously soft silk-blend shirt with a relaxed fit. Pairs perfectly with tailored or casual pieces.',
     bg: '#5a4a35',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    image: Tracksuitted3,
   },
 ];
 
 export const heroSlides = [
   {
     tag: 'New Season · 2025',
-    title: ['Dressed', 'for the', 'Refined.'],
-    sub: 'Premium clothing crafted for those who know exactly who they are.',
-    label: 'Linen Overcoat',
-    image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900&q=80',
+    title: ['blindfolded', 'king tee', 'Refined.'],
+    sub: 'a statement piece built around quiet confidence, focus, and self-belief.',
+    label: 'Shirt',
+    image: blindfolded1,
   },
   {
     tag: 'Exclusive Drop',
-    title: ['Elevated', 'everyday', 'Wear.'],
-    sub: 'Thoughtful pieces that move with you through every occasion.',
-    label: 'Tailored Trousers',
-    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=80',
+    title: ['The Ascension', 'Gold Beanie', 'Wear.'],
+    sub: 'A symbol of elevation, protection, and divine strength.',
+    label: 'Tailored cap',
+    image: Ascension1,
   },
   {
     tag: 'Limited Edition',
-    title: ['Crafted', 'with', 'Intention.'],
+    title: ['KING X Sovereign ', 'Tracksuitted', 'Intention.'],
     sub: 'Each piece a quiet statement. Each fabric a considered choice.',
     label: 'Silk Blend Shirt',
-    image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=900&q=80',
+    image: Tracksuitted1,
   },
 ];
 
-export const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+export const sizes = [  'L', 'XL', 'XXL'];

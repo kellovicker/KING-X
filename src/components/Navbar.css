@@ -164,14 +164,10 @@
   .nav-link { font-size: 9px; letter-spacing: 1px; }
   .navbar__logo { font-size: 17px; letter-spacing: 4px; }
   .navbar__right { gap: 10px; }
-<<<<<<< HEAD
 
   .search-bar { top: 58px; }
   .nav-drawer__header { height: 58px; }
   .nav-drawer { width: 260px; }
 
   .drawer-link { padding: 16px 24px; font-size: 13px; }
-=======
-  .search-bar { padding: 0 14px; top: 56px; }
->>>>>>> 80b75e72176fed6c1a17ed65d32304955c58927e
 }

@@ -297,7 +297,7 @@
   .collection-card { height: 280px; }
 
   .about-section { grid-template-columns: 1fr; }
-  .about-section__img { min-height: 300px; }
+  .about-section__img { height: 300px; }
   .about-section__content { padding: 48px 32px; }
   .about-section__content h2 { font-size: 34px; }
   .about-section__stats { gap: 24px; }

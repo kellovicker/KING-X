@@ -4,6 +4,14 @@ import blindfolded from '../Assets/blindfolded.jpeg'
 import Ascension1 from '../Assets/Ascension1.jpeg'
 import Ascension2 from '../Assets/Ascension2.jpeg'
 import Ascension3 from '../Assets/Ascension3.PNG'
+import Tracksuitted1 from '../Assets/Tracksuitted1.jpeg'
+import Tracksuitted2 from '../Assets/Tracksuitted2.jpeg'
+import Tracksuitted3 from '../Assets/Tracksuitted3.jpeg'
+import Tracksuitted4 from '../Assets/Tracksuitted4.jpeg'
+import Tracksuitted5 from '../Assets/Tracksuitted5.jpeg'
+import Tracksuitted6 from '../Assets/Tracksuitted6.jpeg'
+import tenis1 from '../Assets/tenis1.jpeg'
+import tenis2 from '../Assets/tenis2.jpeg'
 
 export const products = [
   {
@@ -39,109 +47,106 @@ export const products = [
   {
     id: 3,
     name: 'Silk Blend Shirt',
-    category: 'Tops',
+    category: 'Tracksuit',
     collection: 'men',
     price: 19000,
     tag: 'New',
     color: '#e4dbd2',
-    image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&q=80',
+    image: Tracksuitted1,
     images: [
-      'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&q=80',
-      'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800&q=80',
-      'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&q=80',
+      Tracksuitted2,
+      Tracksuitted3,
     ],
     desc: 'Luxuriously soft silk-blend shirt with a relaxed fit. Pairs perfectly with tailored or casual pieces.',
   },
   {
     id: 4,
-    name: 'Cashmere Knit',
+    name: 'Tennis wear',
     category: 'Tops',
     collection: 'women',
-    price: 35000,
+    price: 40000,
     tag: 'New',
     color: '#ead8cc',
-    image: 'https://images.unsplash.com/photo-1551489186-cf8726f514f8?w=600&q=80',
+    image: tenis1,
     images: [
-      'https://images.unsplash.com/photo-1551489186-cf8726f514f8?w=800&q=80',
-      'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=80',
-      'https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?w=800&q=80',
+      tenis2,
+
     ],
     desc: 'Ultra-soft cashmere knit in a boxy, elegant cut. A luxury essential for any season.',
   },
   {
     id: 5,
-    name: 'Wide Leg Pants',
-    category: 'Bottoms',
+    name: ' Leg Pants',
+    category: 'Tracksuit',
     collection: 'women',
-    price: 24000,
+    price: 45000,
     tag: null,
     color: '#d8d0c4',
-    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80',
+    image: Tracksuitted6,
     images: [
-      'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80',
-      'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=800&q=80',
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80',
+      Tracksuitted4,
+      Tracksuitted5,
     ],
     desc: 'Flowing wide-leg trousers with a high-rise waist. Effortless movement for the modern woman.',
   },
-  {
-    id: 6,
-    name: 'Evening Blazer',
-    category: 'Outerwear',
-    collection: 'women',
-    price: 52000,
-    tag: 'Limited',
-    color: '#c8bfb4',
-    image: 'https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=600&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=800&q=80',
-      'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=80',
-      'https://images.unsplash.com/photo-1548624313-0396c75e4b1a?w=800&q=80',
-    ],
-    desc: 'A statement evening blazer with gold-tone button detailing. Structured and sophisticated.',
-  },
-  {
-    id: 7,
-    name: 'Merino Crewneck',
-    category: 'Tops',
-    collection: 'men',
-    price: 22000,
-    tag: null,
-    color: '#e0d8ce',
-    image: 'https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=600&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=800&q=80',
-      'https://images.unsplash.com/photo-1564859228273-274232fdb516?w=800&q=80',
-      'https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80',
-    ],
-    desc: 'Fine merino wool crewneck. Exceptionally soft, temperature-regulating, and timeless.',
-  },
-  {
-    id: 8,
-    name: 'Pleated Midi Skirt',
-    category: 'Bottoms',
-    collection: 'women',
-    price: 18000,
-    tag: 'New',
-    color: '#ddd4c6',
-    image: 'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=600&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=800&q=80',
-      'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80',
-      'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80',
-    ],
-    desc: 'Elegant pleated midi skirt in a lightweight fabric. Moves beautifully, dresses up or down.',
-  },
+  // {
+  //   id: 6,
+  //   name: 'Evening Blazer',
+  //   category: 'Outerwear',
+  //   collection: 'women',
+  //   price: 52000,
+  //   tag: 'Limited',
+  //   color: '#c8bfb4',
+  //   image: 'https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=600&q=80',
+  //   images: [
+  //     'https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=800&q=80',
+  //     'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=80',
+  //     'https://images.unsplash.com/photo-1548624313-0396c75e4b1a?w=800&q=80',
+  //   ],
+  //   desc: 'A statement evening blazer with gold-tone button detailing. Structured and sophisticated.',
+  // },
+  // {
+  //   id: 7,
+  //   name: 'Merino Crewneck',
+  //   category: 'Tops',
+  //   collection: 'men',
+  //   price: 22000,
+  //   tag: null,
+  //   color: '#e0d8ce',
+  //   image: 'https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=600&q=80',
+  //   images: [
+  //     'https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=800&q=80',
+  //     'https://images.unsplash.com/photo-1564859228273-274232fdb516?w=800&q=80',
+  //     'https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&q=80',
+  //   ],
+  //   desc: 'Fine merino wool crewneck. Exceptionally soft, temperature-regulating, and timeless.',
+  // },
+  // {
+  //   id: 8,
+  //   name: 'Pleated Midi Skirt',
+  //   category: 'Bottoms',
+  //   collection: 'women',
+  //   price: 18000,
+  //   tag: 'New',
+  //   color: '#ddd4c6',
+  //   image: 'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=600&q=80',
+  //   images: [
+  //     'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=800&q=80',
+  //     'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80',
+  //     'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80',
+  //   ],
+  //   desc: 'Elegant pleated midi skirt in a lightweight fabric. Moves beautifully, dresses up or down.',
+  // },
 ];
 
 export const collections = [
   {
     id: 'men',
     name: 'Men',
-    label: 'Classic Range',
-    desc: 'Refined essentials for the modern man',
+    label: 'blindfolded king Tee',
+    desc: 'a statement piece built around quiet confidence, focus, and self-belief.',
     bg: '#3d2e1e',
-    image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=800&q=80',
+    image: blindfolded1,
   },
   {
     id: 'women',
@@ -149,7 +154,7 @@ export const collections = [
     label: 'Evening Edit',
     desc: 'Elegant pieces for every occasion',
     bg: '#5a4a35',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    image: Tracksuitted1,
   },
 ];
 
@@ -173,8 +178,8 @@ export const heroSlides = [
     title: ['KING X Sovereign ', 'Tracksuitted', 'Intention.'],
     sub: 'Each piece a quiet statement. Each fabric a considered choice.',
     label: 'Silk Blend Shirt',
-    image: 'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?w=900&q=80',
+    image: Tracksuitted2,
   },
 ];
 
-export const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+export const sizes = ['L', 'XL', 'XXL'];

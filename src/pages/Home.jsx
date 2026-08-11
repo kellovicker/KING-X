@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiArrowRight, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { products, collections, heroSlides } from '../data/products';
 import ProductCard from '../components/ProductCard';
+import blindfolded2 from '../Assets/blindfolded3.jpeg'
 import './Home.css';
 
 export default function Home() {
@@ -119,7 +120,8 @@ export default function Home() {
       <section className="about-section">
         <div className="about-section__img">
           <img
-            src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=80"
+            // src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=80"
+            src={blindfolded2}
             alt="About Kellox"
           />
         </div>
@@ -132,7 +134,7 @@ export default function Home() {
             We believe in dressing with purpose, not trend.
           </p>
           <div className="about-section__stats">
-            <div><span>2019</span><p>Founded</p></div>
+            <div><span>2024</span><p>Founded</p></div>
             <div><span>500+</span><p>Products</p></div>
             <div><span>50k+</span><p>Customers</p></div>
           </div>

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
+import blindfolded2 from '../Assets/blindfolded3.jpeg'
+import tenis1 from '../Assets/tenis1.jpeg'
 import './About.css';
 
 const values = [
@@ -34,7 +36,7 @@ export default function About() {
         </div>
         <div className="about-hero__visual">
           <img
-            src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=80"
+            src={tenis1}
             alt="Kellox fashion"
           />
         </div>
@@ -54,7 +56,7 @@ export default function About() {
       <section className="about-story">
         <div className="about-story__img">
           <img
-            src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=80"
+            src={blindfolded2}
             alt="Kellox craftsmanship"
           />
         </div>

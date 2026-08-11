@@ -86,14 +86,14 @@
 @media (max-width: 768px) {
   .about-page { padding-top: 60px; }
   .about-hero { grid-template-columns: 1fr; min-height: auto; }
-  .about-hero__visual { min-height: 300px; }
+  .about-hero__visual { height: 400px; }
   .about-hero__content { padding: 56px 24px; }
   .about-hero__content h1 { font-size: 40px; }
   .about-hero__sub { max-width: 100%; }
   .about-stats { grid-template-columns: repeat(2, 1fr); }
   .about-stat { padding: 28px 24px; }
   .about-story { grid-template-columns: 1fr; }
-  .about-story__img { min-height: 300px; }
+  .about-story__img { height: 300px; }
   .about-story__text { padding: 48px 24px; }
   .about-story__text h2 { font-size: 32px; }
   .about-values { padding: 56px 24px; }

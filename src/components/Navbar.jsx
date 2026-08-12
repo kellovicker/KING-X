@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useState, useEffect, useMemo } from 'react';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { FiSearch, FiShoppingBag, FiMenu, FiX, FiHeart } from 'react-icons/fi';
 import { useCart } from '../context/CartContext';
+import { products } from '../data/products'; // adjust path if different
 import './Navbar.css';
 
 export default function Navbar() {
@@ -11,6 +12,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen]     = useState(false);
   const [searchVal, setSearchVal]   = useState('');
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -38,6 +40,23 @@ export default function Navbar() {
     mq.addEventListener('change', onChange);
     return () => mq.removeEventListener('change', onChange);
   }, []);
+
+  /* filtered search results — by name and category */
+  const searchResults = useMemo(() => {
+    const q = searchVal.trim().toLowerCase();
+    if (!q) return [];
+    return products.filter(
+      p =>
+        p.name.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q)
+    );
+  }, [searchVal]);
+
+  const goToProduct = (id) => {
+    navigate(`/product/${id}`);
+    setSearchOpen(false);
+    setSearchVal('');
+  };
 
   const navLinks = [
     { to: '/shop',        label: 'Shop' },
@@ -141,6 +160,30 @@ export default function Navbar() {
         />
         <button onClick={() => setSearchOpen(false)}>✕</button>
       </div>
+
+      {/* Search results — sibling of search-bar, not nested, so it isn't clipped by overflow:hidden */}
+      {searchOpen && searchVal.trim() && (
+        <div className="search-results">
+          {searchResults.length === 0 ? (
+            <p className="search-results__empty">No products found for "{searchVal}"</p>
+          ) : (
+            searchResults.map(p => (
+              <div
+                key={p.id}
+                className="search-results__item"
+                onClick={() => goToProduct(p.id)}
+              >
+                <img src={p.image} alt={p.name} />
+                <div className="search-results__info">
+                  <span className="search-results__name">{p.name}</span>
+                  <span className="search-results__category">{p.category}</span>
+                </div>
+                <span className="search-results__price">₦{p.price.toLocaleString()}</span>
+              </div>
+            ))
+          )}
+        </div>
+      )}
     </>
   );
 }

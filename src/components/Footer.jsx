@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom';
 import { FiInstagram, FiTwitter, FiFacebook } from 'react-icons/fi';
 import './Footer.css';
+import { FaTiktok } from "react-icons/fa";
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__top">
         <div className="footer__brand">
-          <div className="footer__logo">KELLOX</div>
+          <div className="footer__logo">KING-X</div>
           <p className="footer__tagline">You're cooler than you think.</p>
           <div className="footer__socials">
-            <a href="#" aria-label="Instagram"><FiInstagram size={18} /></a>
-            <a href="#" aria-label="Twitter"><FiTwitter size={18} /></a>
-            <a href="#" aria-label="Facebook"><FiFacebook size={18} /></a>
+            <a href="https://www.instagram.com/kingx_2026?igsh=MWRiM3JkbTFmc2k4dA==" aria-label="Instagram"><FiInstagram size={18} /></a>
+            <a href="https://www.tiktok.com/@king.x540?_r=1&_t=ZS-95VfoTG8FJB" aria-label="Twitter"><FaTiktok  size={18} /></a>
+            <a href="https://www.facebook.com/share/14b7WNKYijK/?mibextid=wwXIfr" aria-label="Facebook"><FiFacebook size={18} /></a>
           </div>
         </div>
 

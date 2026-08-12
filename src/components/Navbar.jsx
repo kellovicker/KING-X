@@ -51,7 +51,7 @@ export default function Navbar() {
         {/* Logo — left */}
         <Link to="/" className="navbar__logo-wrap">
           <img src="/logo.png" alt="Kellox" className="navbar__logo-img" />
-          <span className="navbar__logo-text">KINGS-X</span>
+          <span className="navbar__logo-text">KING-X</span>
         </Link>
 
         {/* Nav links — center, desktop only */}
@@ -69,14 +69,6 @@ export default function Navbar() {
 
         {/* Right side */}
         <div className="navbar__right">
-          {/* Hamburger — mobile only */}
-          <button
-            className="nav-hamburger"
-            onClick={() => { setMenuOpen(m => !m); setSearchOpen(false); }}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {menuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
-          </button>
 
           <button
             className="nav-icon"
@@ -94,6 +86,16 @@ export default function Navbar() {
           >
             <FiSearch size={19} />
           </button>
+          
+          {/* Hamburger — mobile only */}
+          <button
+            className="nav-hamburger"
+            onClick={() => { setMenuOpen(m => !m); setSearchOpen(false); }}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          >
+            {menuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+          </button>
+          
         </div>
       </nav>
 

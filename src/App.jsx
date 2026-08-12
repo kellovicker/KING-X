@@ -10,6 +10,7 @@ import ProductDetail from './pages/ProductDetail';
 import About from './pages/About';
 import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
+import WhatsAppButton from './components/WhatsappBtn';
 
 function AppLayout() {
   const location = useLocation();
@@ -32,6 +33,7 @@ function AppLayout() {
         </Routes>
       </main>
       {!hideFooter && <Footer />}
+        <WhatsAppButton/ >
     </>
   );
 }

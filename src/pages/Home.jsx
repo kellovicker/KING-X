@@ -129,14 +129,14 @@ export default function Home() {
           <p className="section-tag">Our Story</p>
           <h2>Crafted with<br /><em>intention.</em></h2>
           <p className="about-section__text">
-            Kellox was born from a belief that great clothing should feel as good as it looks.
+            KING-X was born from a belief that great clothing should feel as good as it looks.
             Every piece is thoughtfully made — premium fabrics, considered cuts, enduring style.
             We believe in dressing with purpose, not trend.
           </p>
           <div className="about-section__stats">
-            <div><span>2024</span><p>Founded</p></div>
+            <div><span>2026</span><p>Founded</p></div>
             <div><span>500+</span><p>Products</p></div>
-            <div><span>50k+</span><p>Customers</p></div>
+            <div><span>200+</span><p>Customers</p></div>
           </div>
           <Link to="/about" className="btn-gold">Learn More</Link>
         </div>

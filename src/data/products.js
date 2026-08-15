@@ -46,10 +46,10 @@ export const products = [
   },
   {
     id: 3,
-    name: 'Silk Blend Shirt',
+    name: 'Sovereign track suit',
     category: 'Tracksuit',
     collection: 'men',
-    price: 19000,
+    price: 80000,
     tag: 'New',
     color: '#e4dbd2',
     image: Tracksuitted1,
@@ -151,7 +151,7 @@ export const collections = [
   {
     id: 'women',
     name: 'Women',
-    label: 'Evening Edit',
+    label: 'Sovereign track suit',
     desc: 'Elegant pieces for every occasion',
     bg: '#5a4a35',
     image: Tracksuitted1,

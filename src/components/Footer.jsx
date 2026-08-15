@@ -27,7 +27,7 @@ export default function Footer() {
           </div>
           <div className="footer__col">
             <h4>Company</h4>
-            <Link to="/about">About Kellox</Link>
+            <Link to="/about">About KING-X</Link>
             <a href="#">Careers</a>
             <a href="#">Press</a>
             <a href="#">Sustainability</a>
@@ -43,7 +43,7 @@ export default function Footer() {
       </div>
 
       <div className="footer__bottom">
-        <p>© 2025 Kellox. All rights reserved.</p>
+        <p>© 2026 KING-X. All rights reserved.</p>
         <div className="footer__legal">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>

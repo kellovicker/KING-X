@@ -27,7 +27,7 @@ export default function About() {
           <p className="section-tag">Our Story</p>
           <h1>Dressed with<br /><em>Purpose.</em></h1>
           <p className="about-hero__sub">
-            Kellox was born in Lagos from a simple conviction — that great clothing should feel
+            KING-X was born in Lagos from a simple conviction — that great clothing should feel
             as good as it looks, and last far longer than the season.
           </p>
           <Link to="/shop" className="btn-gold">
@@ -44,7 +44,7 @@ export default function About() {
 
       {/* Stats */}
       <section className="about-stats">
-        {[['2019','Founded in Lagos'],['500+','Pieces in catalogue'],['50k+','Happy customers'],['12','Countries shipped to']].map(([num, label]) => (
+        {[['2026','Founded in Lagos'],['500+','Pieces in catalogue'],['200+','Happy customers'],['12','Countries shipped to']].map(([num, label]) => (
           <div key={label} className="about-stat">
             <span>{num}</span>
             <p>{label}</p>
@@ -69,7 +69,7 @@ export default function About() {
             the compromise between quality and style — so we chose not to compromise.
           </p>
           <p>
-            Every Kellox garment is the result of meticulous sourcing, pattern-making,
+            Every KING-X garment is the result of meticulous sourcing, pattern-making,
             and finishing. We work with artisan manufacturers who share our obsession
             with the details that most people never notice — but always feel.
           </p>

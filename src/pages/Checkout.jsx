@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiLock, FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import { FiLock, FiChevronDown, FiChevronUp, FiAlertCircle } from 'react-icons/fi';
+import emailjs from '@emailjs/browser';
 import { useCart } from '../context/CartContext';
 import './Checkout.css';
 
@@ -27,6 +28,19 @@ const FIELDS = [
   { key: 'city',      label: 'City',           placeholder: 'Lagos',                     type: 'text',  row: 5 },
   { key: 'state',     label: 'State',          placeholder: 'Lagos State',               type: 'text',  row: 5 },
 ];
+
+/* simple per-field validation used for both blur and submit checks */
+function validateField(key, value) {
+  const v = (value || '').trim();
+  if (!v) return 'This field is required';
+  if (key === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+    return 'Enter a valid email address';
+  }
+  if (key === 'phone' && v.replace(/\D/g, '').length < 10) {
+    return 'Enter a valid phone number';
+  }
+  return '';
+}
 
 /* ─────────────────────────────────────────────────────────
    Field — outside Checkout to prevent remount on re-render
@@ -74,15 +88,51 @@ export default function Checkout() {
     cardName: '', cardNum: '', expiry: '', cvv: '',
   });
 
+  const [touched, setTouched] = useState({});
+  const [errors, setErrors]   = useState({});
+  const [sending, setSending]     = useState(false);
+  const [sendError, setSendError] = useState('');
+
   const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }));
+
+  const handleChange = (key) => (e) => {
+    const value = e.target.value;
+    setForm(f => ({ ...f, [key]: value }));
+    if (touched[key]) {
+      setErrors(er => ({ ...er, [key]: validateField(key, value) }));
+    }
+  };
+
+  const handleBlur = (key) => () => {
+    setTouched(t => ({ ...t, [key]: true }));
+    setErrors(er => ({ ...er, [key]: validateField(key, form[key]) }));
+  };
 
   const shipping = total >= 30000 ? 0 : 2500;
   const grandTotal = total + shipping;
   const fmt = n => `₦${n.toLocaleString()}`;
 
   const handleNext = () => {
+    if (step === 0) {
+      // validate every delivery field before moving on
+      const newTouched = {};
+      const newErrors = {};
+      FIELDS.forEach(({ key }) => {
+        newTouched[key] = true;
+        newErrors[key] = validateField(key, form[key]);
+      });
+      setTouched(t => ({ ...t, ...newTouched }));
+      setErrors(er => ({ ...er, ...newErrors }));
+      if (Object.values(newErrors).some(Boolean)) return;
+    }
     if (step < STEPS.length - 1) setStep(s => s + 1);
   };
+
+  const payMethodLabel = form.payMethod === 'card'
+    ? 'Credit / Debit Card'
+    : form.payMethod === 'paystack'
+      ? 'Paystack'
+      : 'Bank Transfer';
 
   /* ── place order: send both emails ── */
   const handlePlace = async () => {
@@ -101,7 +151,7 @@ export default function Checkout() {
       customer_email   : form.email,
       customer_phone   : form.phone,
       delivery_address : `${form.address}, ${form.city}, ${form.state}`,
-      payment_method   : 'Bank Transfer',
+      payment_method   : payMethodLabel,
       order_items      : orderLines,
       subtotal         : `NGN ${total.toLocaleString()}`,
       shipping_fee     : shipping === 0 ? 'Free' : `NGN ${shipping.toLocaleString()}`,
@@ -202,39 +252,13 @@ export default function Checkout() {
           <div className="checkout__form">
             <h2>Delivery Details</h2>
             <div className="form-row">
-              <div className="form-group">
-                <label>First Name</label>
-                <input placeholder="John" value={form.firstName} onChange={set('firstName')} />
-              </div>
-              <div className="form-group">
-                <label>Last Name</label>
-                <input placeholder="Doe" value={form.lastName} onChange={set('lastName')} />
-              </div>
-            </div>
-            <div className="form-group">
-              <label>Email</label>
-              <input type="email" placeholder="john@example.com" value={form.email} onChange={set('email')} />
-            </div>
-            <div className="form-group">
-              <label>Phone</label>
-              <input type="tel" placeholder="+234 800 000 0000" value={form.phone} onChange={set('phone')} />
-            </div>
-            <div className="form-group">
-              <label>Address</label>
-              <input placeholder="12 Victoria Island, Lagos" value={form.address} onChange={set('address')} />
+              {rowKeys(1).map((k) => <Field key={k} fKey={k} {...fieldProps} />)}
             </div>
             {[2, 3, 4].map((r) =>
               rowKeys(r).map((k) => <Field key={k} fKey={k} {...fieldProps} />)
             )}
             <div className="form-row">
-              <div className="form-group">
-                <label>City</label>
-                <input placeholder="Lagos" value={form.city} onChange={set('city')} />
-              </div>
-              <div className="form-group">
-                <label>State</label>
-                <input placeholder="Lagos State" value={form.state} onChange={set('state')} />
-              </div>
+              {rowKeys(5).map((k) => <Field key={k} fKey={k} {...fieldProps} />)}
             </div>
             <button className="btn-gold checkout__next-btn" onClick={handleNext}>
               Continue to Payment
@@ -326,7 +350,7 @@ export default function Checkout() {
                 <span>Payment</span>
                 <button onClick={() => setStep(1)} className="review-edit">Edit</button>
               </div>
-              <p>{form.payMethod === 'card' ? 'Credit / Debit Card' : form.payMethod === 'paystack' ? 'Paystack' : 'Bank Transfer'}</p>
+              <p>{payMethodLabel}</p>
               {form.payMethod === 'card' && form.cardNum && <p>•••• •••• •••• {form.cardNum.slice(-4)}</p>}
             </div>
 
@@ -343,10 +367,20 @@ export default function Checkout() {
               </div>
             </div>
 
-            <button className="btn-gold checkout__next-btn checkout__place-btn" onClick={handlePlace}>
-              <FiLock size={14} /> Place Order
+            {sendError && (
+              <p className="field-error" style={{ marginBottom: 12 }}>
+                <FiAlertCircle size={11} /> {sendError}
+              </p>
+            )}
+
+            <button
+              className="btn-gold checkout__next-btn checkout__place-btn"
+              onClick={handlePlace}
+              disabled={sending}
+            >
+              <FiLock size={14} /> {sending ? 'Placing Order…' : 'Place Order'}
             </button>
-            <button className="btn-outline-dark" onClick={() => setStep(1)} style={{ width: '100%', marginTop: 12 }}>Back</button>
+            <button className="btn-outline-dark" onClick={() => setStep(1)} style={{ width: '100%', marginTop: 12 }} disabled={sending}>Back</button>
           </div>
         )}
       </div>

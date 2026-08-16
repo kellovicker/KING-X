@@ -84,7 +84,7 @@ export default function Checkout() {
   const [form, setForm] = useState({
     firstName: '', lastName: '', email: '', phone: '',
     address: '', city: '', state: '', zip: '',
-    payMethod: 'card',
+    payMethod: 'transfer',
     cardName: '', cardNum: '', expiry: '', cvv: '',
   });
 
@@ -128,11 +128,7 @@ export default function Checkout() {
     if (step < STEPS.length - 1) setStep(s => s + 1);
   };
 
-  const payMethodLabel = form.payMethod === 'card'
-    ? 'Credit / Debit Card'
-    : form.payMethod === 'paystack'
-      ? 'Paystack'
-      : 'Bank Transfer';
+  const payMethodLabel = 'Bank Transfer';
 
   /* ── place order: send both emails ── */
   const handlePlace = async () => {
@@ -272,8 +268,10 @@ export default function Checkout() {
             <h2>Payment Method</h2>
             <div className="pay-methods">
               {[
+                /* Card and Paystack disabled for now — bank transfer only
                 { id: 'card', label: 'Credit / Debit Card' },
                 { id: 'paystack', label: 'Pay with Paystack' },
+                */
                 { id: 'transfer', label: 'Bank Transfer' },
               ].map(m => (
                 <button
@@ -287,6 +285,7 @@ export default function Checkout() {
               ))}
             </div>
 
+            {/* Card payment disabled for now — bank transfer only
             {form.payMethod === 'card' && (
               <div className="card-fields">
                 <div className="form-group">
@@ -309,21 +308,24 @@ export default function Checkout() {
                 </div>
               </div>
             )}
+            */}
 
             {form.payMethod === 'transfer' && (
               <div className="transfer-info">
-                <p>Bank: <strong>First Bank of Nigeria</strong></p>
-                <p>Account Name: <strong>Kellox Limited</strong></p>
-                <p>Account Number: <strong>3012345678</strong></p>
+                <p>Bank: <strong>UBA</strong></p>
+                <p>Account Name: <strong>KINGZ EXCLUSIVE CONCEPTS</strong></p>
+                <p>Account Number: <strong>1030052894</strong></p>
                 <p className="transfer-note">Transfer the exact amount and send proof of payment to orders@kellox.ng</p>
               </div>
             )}
 
+            {/* Paystack disabled for now — bank transfer only
             {form.payMethod === 'paystack' && (
               <div className="paystack-note">
                 <p>You'll be redirected to Paystack's secure payment page to complete your order.</p>
               </div>
             )}
+            */}
 
             <div className="checkout__nav-btns">
               <button className="btn-outline-dark" onClick={() => setStep(0)}>Back</button>
@@ -351,7 +353,7 @@ export default function Checkout() {
                 <button onClick={() => setStep(1)} className="review-edit">Edit</button>
               </div>
               <p>{payMethodLabel}</p>
-              {form.payMethod === 'card' && form.cardNum && <p>•••• •••• •••• {form.cardNum.slice(-4)}</p>}
+              <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>UBA · 1030052894 · KINGZ EXCLUSIVE CONCEPTS</p>
             </div>
 
             <div className="checkout__totals">

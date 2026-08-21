@@ -239,19 +239,19 @@ export const products = [
       wrapped,
     ],
   },
-    {
-    id: 15,
-    name: ' The Wrapped King Tee ',
-    category: 'polo',
-    collection: 'men',
-    price: 40000,
-    tag: 'new',
-    color: '#d8d0c4',
-    image: wrapped,
-    images: [
-      wrapped,
-    ],
-  },
+  //   {
+  //   id: 15,
+  //   name: ' The Wrapped King Tee ',
+  //   category: 'polo',
+  //   collection: 'men',
+  //   price: 40000,
+  //   tag: 'new',
+  //   color: '#d8d0c4',
+  //   image: wrapped,
+  //   images: [
+  //     wrapped,
+  //   ],
+  // },
   
   // {
   //   id: 6,
@@ -324,11 +324,11 @@ export const collections = [
 
 export const heroSlides = [
   {
-    tag: 'New Season · 2025',
-    title: ['blindfolded', 'king tee', 'Refined.'],
+     tag: 'New Season · 2025',
+    title: [' Regent Series ', 'KING X', 'Refined.'],
     sub: 'a statement piece built around quiet confidence, focus, and self-belief.',
-    label: 'Shirt',
-    image: blindfolded1,
+    label: 'Jersey',
+    image: regent, 
   },
   {
     tag: 'Exclusive Drop',
@@ -336,6 +336,14 @@ export const heroSlides = [
     sub: 'A symbol of elevation, protection, and divine strength.',
     label: 'Tailored cap',
     image: Ascension1,
+  },
+  
+  {
+    tag: 'New Season · 2025',
+    title: ['blindfolded', 'king tee', 'Refined.'],
+    sub: 'a statement piece built around quiet confidence, focus, and self-belief.',
+    label: 'Shirt',
+    image: blindfolded1,
   },
   {
     tag: 'Limited Edition',

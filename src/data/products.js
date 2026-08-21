@@ -12,6 +12,21 @@ import Tracksuitted5 from '../Assets/Tracksuitted5.jpeg'
 import Tracksuitted6 from '../Assets/Tracksuitted6.jpeg'
 import tenis1 from '../Assets/tenis1.jpeg'
 import tenis2 from '../Assets/tenis2.jpeg'
+import elegance from '../Assets/KING X elegance 2.jpeg'
+import elegance2 from '../Assets/KING X elegance 3.jpeg'
+import elegance3 from '../Assets/KING X elegance 4.jpeg'
+import elegance4 from '../Assets/KING X elegance.jpeg'
+import regent from '../Assets/slide.jpeg'
+import Sovereign from '../Assets/KING X Sovereign series jersey.jpeg'
+import Sovereign1 from '../Assets/Sovereign.jpeg'
+import hunt from '../Assets/KING X the Hunt limited polo shirt.jpeg'
+import Dynasty from '../Assets/The Dynasty Trouser.jpeg'
+import Crown from '../Assets/The crown Trouser.jpeg'
+import Throne from '../Assets/The throne trouser.jpeg'
+import Beanie from '../Assets/The revelation Beanie.jpeg'
+import wrapped from '../Assets/The wrapped King Tee.jpeg'
+import Tracksuitted7 from '../Assets/KING X Zip up+ side pocket pants 2.jpeg'
+import Tracksuitted8 from '../Assets/KING X Zip up+ side pocket pants.jpeg'
 
 export const products = [
   {
@@ -62,9 +77,9 @@ export const products = [
   {
     id: 4,
     name: 'Tennis wear',
-    category: 'Tops',
+    category: 'fitness',
     collection: 'women',
-    price: 40000,
+    price: 30000,
     tag: 'New',
     color: '#ead8cc',
     image: tenis1,
@@ -76,19 +91,168 @@ export const products = [
   },
   {
     id: 5,
-    name: ' Leg Pants',
-    category: 'Tracksuit',
+    name: 'KING X Zip up+ side pocket pants',
+    category: 'fitness',
     collection: 'women',
-    price: 45000,
-    tag: null,
+    price: 30000,
+    tag: 'new',
     color: '#d8d0c4',
     image: Tracksuitted6,
     images: [
-      Tracksuitted4,
       Tracksuitted5,
+      Tracksuitted4,
+      Tracksuitted7,
+      Tracksuitted8,
     ],
     desc: 'Flowing wide-leg trousers with a high-rise waist. Effortless movement for the modern woman.',
   },
+  {
+    id: 6,
+    name: ' KING X elegance',
+    category: '2pics',
+    collection: 'women',
+    price: 25000,
+    tag: 'new',
+    color: '#d8d0c4',
+    image: elegance,
+    images: [
+      elegance2,
+      elegance3,
+      elegance4
+    ],
+  },
+  {
+    id: 7,
+    name: ' KING X Regent Series ',
+    category: 'Jersey',
+    collection: 'unisex',
+    price: 45000,
+    tag: 'new',
+    color: '#d8d0c4',
+    image: regent,
+    images: [
+      regent,
+      regent,
+    ],
+  },
+  {
+    id: 8,
+    name: ' KING X Sovereign Series ',
+    category: 'Jersey',
+    collection: 'unisex',
+    price: 40000,
+    tag: 'new',
+    color: '#d8d0c4',
+    image: Sovereign,
+    images: [
+      Sovereign1,
+    ],
+  },
+  {
+    id: 9,
+    name: ' KING X Hunt Limited Polo ',
+    category: 'polo',
+    collection: 'unisex',
+    price: 50000,
+    tag: 'new',
+    color: '#d8d0c4',
+    image: hunt,
+    images: [
+      hunt,
+    ],
+  }, 
+  {
+    id: 10,
+    name: ' KING X Hunt Limited Polo ',
+    category: 'polo',
+    collection: 'unisex',
+    price: 50000,
+    tag: 'new',
+    color: '#d8d0c4',
+    image: hunt,
+    images: [
+      hunt,
+    ],
+  },  
+  {
+    id: 11,
+    name: ' The Dynasty Trouser ',
+    category: 'trouser',
+    collection: 'men',
+    price: 50000,
+    tag: 'new',
+    color: '#d8d0c4',
+    image: Dynasty,
+    images: [
+      Dynasty,
+    ],
+  },
+  {
+    id: 12,
+    name: ' The Crown Trouser ',
+    category: 'trouser',
+    collection: 'men',
+    price: 50000,
+    tag: 'new',
+    color: '#d8d0c4',
+    image: Crown,
+    images: [
+      Crown,
+    ],
+  },
+  {
+    id: 13,
+    name: ' The revelation Beanie ',
+    category: 'cap',
+    collection: 'unisex',
+    price: 20000,
+    tag: 'new',
+    color: '#d8d0c4',
+    image: Beanie,
+    images: [
+      Beanie,
+    ],
+  },
+  {
+    id: 13,
+    name: ' The Throne trouser ',
+    category: 'trouser',
+    collection: 'men',
+    price: 50000,
+    tag: 'new',
+    color: '#d8d0c4',
+    image: Throne,
+    images: [
+      Throne,
+    ],
+  },
+  {
+    id: 14,
+    name: ' The Wrapped King Tee ',
+    category: 'polo',
+    collection: 'men',
+    price: 40000,
+    tag: 'new',
+    color: '#d8d0c4',
+    image: wrapped,
+    images: [
+      wrapped,
+    ],
+  },
+    {
+    id: 15,
+    name: ' The Wrapped King Tee ',
+    category: 'polo',
+    collection: 'men',
+    price: 40000,
+    tag: 'new',
+    color: '#d8d0c4',
+    image: wrapped,
+    images: [
+      wrapped,
+    ],
+  },
+  
   // {
   //   id: 6,
   //   name: 'Evening Blazer',

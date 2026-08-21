@@ -12,9 +12,9 @@ const values = [
 ];
 
 const team = [
-  { name: 'Adaeze Okafor',     role: 'Founder & Creative Director', initials: 'AO', color: '#e8dfd0' },
-  { name: 'Chukwuemeka Eze',   role: 'Head of Design',              initials: 'CE', color: '#ddd5c8' },
-  { name: 'Ngozi Abara',       role: 'Operations Director',         initials: 'NA', color: '#e4dbd2' },
+  { name: 'Isaac Promise',     role: 'Founder',            initials: 'IP', color: '#e8dfd0' },
+  { name: 'Pep Kome',          role: 'Creative Director',  initials: 'PK', color: '#ddd5c8' },
+  { name: 'Blessed Abraham',   role: 'Operating Director', initials: 'BA', color: '#e4dbd2' },
 ];
 
 export default function About() {
@@ -27,8 +27,13 @@ export default function About() {
           <p className="section-tag">Our Story</p>
           <h1>Dressed with<br /><em>Purpose.</em></h1>
           <p className="about-hero__sub">
-            KING-X was born in Lagos from a simple conviction — that great clothing should feel
-            as good as it looks, and last far longer than the season.
+            KING X is more than a clothing brand, it is a lifestyle, a mindset, and a statement of identity.
+          </p>
+          <p>
+            Built for individuals who believe in confidence, ambition, originality, and self-expression, KING X blends premium streetwear, lifestyle fashion, and performance-inspired pieces to create clothing that moves with you through every part of life.
+          </p>
+          <p className="about-hero__tagline">
+            KING X — Royal, Prestige, and Legacy.
           </p>
           <Link to="/shop" className="btn-gold">
             Shop the Collection <FiArrowRight size={14} />
@@ -37,14 +42,14 @@ export default function About() {
         <div className="about-hero__visual">
           <img
             src={tenis1}
-            alt="Kellox fashion"
+            alt="KING X fashion"
           />
         </div>
       </section>
 
       {/* Stats */}
       <section className="about-stats">
-        {[['2026','Founded in Lagos'],['500+','Pieces in catalogue'],['200+','Happy customers'],['12','Countries shipped to']].map(([num, label]) => (
+        {[['2026','Founded in Uyo, Akwa Ibom'],['200+','Pieces in catalogue'],['200+','Happy customers'],['12','Countries shipped to']].map(([num, label]) => (
           <div key={label} className="about-stat">
             <span>{num}</span>
             <p>{label}</p>
@@ -57,21 +62,17 @@ export default function About() {
         <div className="about-story__img">
           <img
             src={blindfolded2}
-            alt="Kellox craftsmanship"
+            alt="KING X craftsmanship"
           />
         </div>
         <div className="about-story__text">
           <p className="section-tag">The Beginning</p>
-          <h2>From Lagos,<br />to the World.</h2>
+          <h2>From Uyo,<br />to the World.</h2>
           <p>
-            What began as a small studio in Lagos has grown into one of Nigeria's most
-            respected premium clothing labels. We started because we were frustrated with
-            the compromise between quality and style — so we chose not to compromise.
+           From everyday street style to fitness, school, casual outings, and elevated lifestyle looks, every KING X piece is designed with comfort, quality, exclusivity, and modern style in mind.
           </p>
           <p>
-            Every KING-X garment is the result of meticulous sourcing, pattern-making,
-            and finishing. We work with artisan manufacturers who share our obsession
-            with the details that most people never notice — but always feel.
+            Our vision is simple: to build KING X into a globally recognized fashion house that represents confidence, individuality, and the relentless pursuit of greatness.
           </p>
         </div>
       </section>

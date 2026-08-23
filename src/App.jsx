@@ -11,6 +11,7 @@ import About from './pages/About';
 import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
 import WhatsAppButton from './components/WhatsappBtn';
+import ScrollToTop from './components/ScrollToTop';
 
 function AppLayout() {
   const location = useLocation();
@@ -22,6 +23,7 @@ function AppLayout() {
       {!hideNav && <Navbar />}
       <CartDrawer />
       <main>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />

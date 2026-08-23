@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { products, collections } from '../data/products';
 import ProductCard from '../components/ProductCard';
@@ -6,13 +6,12 @@ import './Collections.css';
 
 export default function Collections() {
   const [params, setParams] = useSearchParams();
-  const [active, setActive] = useState(params.get('cat') || 'men');
+  const active = params.get('cat') || 'men'; // always reflects the current URL
 
   const col = collections.find(c => c.id === active);
   const filtered = useMemo(() => products.filter(p => p.collection === active), [active]);
 
   const switchCol = (id) => {
-    setActive(id);
     setParams({ cat: id });
   };
 

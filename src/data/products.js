@@ -49,7 +49,7 @@ export const products = [
     name: 'The Ascension (Gold Beanie)',
     category: 'cap',
     collection: 'men',
-    price: 30000,
+    price: 25000,
     tag: 'new',
     color: '#ddd5c8',
     image: Ascension1,

@@ -29,21 +29,21 @@ import Tracksuitted7 from '../Assets/KING X Zip up+ side pocket pants 2.jpeg'
 import Tracksuitted8 from '../Assets/KING X Zip up+ side pocket pants.jpeg'
 
 export const products = [
-  {
-    id: 1,
-    name: 'blindfolded king Tee',
-    category: 'shirt',
-    collection: 'men',
-    price: 55000,
-    tag: 'New',
-    color: '#e8dfd0',
-    image: blindfolded1,
-    images: [
-      blindfolded2,
-      blindfolded,
-    ],
-    desc: 'a statement piece built around quiet confidence, focus, and self-belief.',
-  },
+  // {
+  //   id: 1,
+  //   name: 'blindfolded king Tee',
+  //   category: 'shirt',
+  //   collection: 'men',
+  //   price: 55000,
+  //   tag: 'New',
+  //   color: '#e8dfd0',
+  //   image: blindfolded1,
+  //   images: [
+  //     blindfolded2,
+  //     blindfolded,
+  //   ],
+  //   desc: 'a statement piece built around quiet confidence, focus, and self-belief.',
+  // },
   {
     id: 2,
     name: 'The Ascension (Gold Beanie)',
@@ -237,6 +237,9 @@ export const products = [
     image: wrapped,
     images: [
       wrapped,
+      blindfolded2,
+      blindfolded1,
+      blindfolded
     ],
   },
   //   {

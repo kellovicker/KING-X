@@ -175,7 +175,7 @@ export default function Checkout() {
       }
 
       clearCart();
-      navigate('/order-confirmation');
+      navigate('/order-confirmation', { state: { orderId } });
     } catch (err) {
       console.error('EmailJS error:', err.status, err.text);
       setSendError('Could not send your order. Please try again or reach us on WhatsApp.');

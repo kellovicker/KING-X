@@ -1,12 +1,18 @@
-import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useLocation, Navigate } from 'react-router-dom';
 import { FiCheckCircle, FiPackage, FiMail, FiArrowRight } from 'react-icons/fi';
 import './OrderConfirmation.css';
 
 export default function OrderConfirmation() {
-  const orderNum = useRef(`KLX-${Math.floor(100000 + Math.random() * 900000)}`);
+  const location = useLocation();
+  const orderId = location.state?.orderId;
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  // If someone lands here directly (no order was actually placed), send them back to shop
+  if (!orderId) {
+    return <Navigate to="/shop" replace />;
+  }
 
   return (
     <div className="order-confirm page-enter">
@@ -23,7 +29,7 @@ export default function OrderConfirmation() {
 
         <div className="order-confirm__num">
           <span>Order Number</span>
-          <strong>{orderNum.current}</strong>
+          <strong>{orderId}</strong>
         </div>
 
         <div className="order-confirm__steps">

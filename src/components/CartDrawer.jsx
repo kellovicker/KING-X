@@ -39,7 +39,21 @@ export default function CartDrawer() {
                   <img src={item.image} alt={item.name} className="cart-item__img" />
                   <div className="cart-item__info">
                     <div className="cart-item__name">{item.name}</div>
-                    <div className="cart-item__meta">Size: {item.size} · {item.category}</div>
+                    <div className="cart-item__meta">
+                      {item.size && <>Size: {item.size}</>}
+                      {item.size && item.color && ' · '}
+                      {item.color && (
+                        <span className="cart-item__color">
+                          <span
+                            className="cart-item__color-dot"
+                            style={{ background: item.colorHex || item.color }}
+                          />
+                          {item.color}
+                        </span>
+                      )}
+                      {(item.size || item.color) && ' · '}
+                      {item.category}
+                    </div>
                     <div className="cart-item__price">{fmt(item.price)}</div>
                     <div className="cart-item__actions">
                       <div className="qty-control">

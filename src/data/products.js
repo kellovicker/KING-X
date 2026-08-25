@@ -83,8 +83,13 @@ export const products = [
     tag: 'New',
     color: '#ead8cc',
     image: tenis1,
+    colors: [                  
+    { name: 'red', hex: '#ff0000' },
+    { name: 'Black', hex: '#1a1a1a' },
+  ],
     images: [
       tenis2,
+      tenis1,
 
     ],
     desc: 'Ultra-soft cashmere knit in a boxy, elegant cut. A luxury essential for any season.',
@@ -161,19 +166,6 @@ export const products = [
       hunt,
     ],
   }, 
-  {
-    id: 10,
-    name: ' KING X Hunt Limited Polo ',
-    category: 'polo',
-    collection: 'unisex',
-    price: 50000,
-    tag: 'new',
-    color: '#d8d0c4',
-    image: hunt,
-    images: [
-      hunt,
-    ],
-  },  
   {
     id: 11,
     name: ' The Dynasty Trouser ',

@@ -8,13 +8,13 @@ import './Checkout.css';
 /* ─────────────────────────────────────────────────────────
    EmailJS credentials
    EJS_SERVICE      — same service for both emails
-   EJS_TEMPLATE_BIZ — template sent TO King-X (order alert)
-   EJS_TEMPLATE_CUS — template sent TO the customer (confirmation)
+   EJS_TEMPLATE_BIZ — template sent TO King-X (order alert)   To Email = {{to_email}}
+   EJS_TEMPLATE_CUS — template sent TO the customer (confirmation)  To Email = {{to_email}}
    EJS_PUBLIC       — your public key
 ───────────────────────────────────────────────────────── */
 const EJS_SERVICE      = 'service_3yrp4ut';
-const EJS_TEMPLATE_BIZ = 'template_92xxf3a';   // ← your existing template (notify King-X)
-const EJS_TEMPLATE_CUS = 'template_CUSTOMER';  // ← new template (confirm to customer)
+const EJS_TEMPLATE_BIZ = 'template_92xxf3a';
+const EJS_TEMPLATE_CUS = 'template_e0a4a01';
 const EJS_PUBLIC       = '1dNrTuEHY6wE3FFyy';
 
 const STEPS = ['Delivery', 'Payment', 'Review'];
@@ -29,7 +29,6 @@ const FIELDS = [
   { key: 'state',     label: 'State',          placeholder: 'Lagos State',               type: 'text',  row: 5 },
 ];
 
-/* simple per-field validation used for both blur and submit checks */
 function validateField(key, value) {
   const v = (value || '').trim();
   if (!v) return 'This field is required';
@@ -42,10 +41,6 @@ function validateField(key, value) {
   return '';
 }
 
-/* ─────────────────────────────────────────────────────────
-   Field — outside Checkout to prevent remount on re-render
-   (fixes mobile keyboard losing focus on every keystroke)
-───────────────────────────────────────────────────────── */
 function Field({ fKey, fields, form, touched, errors, onChange, onBlur }) {
   const f      = fields.find((x) => x.key === fKey);
   const hasErr = touched[fKey] && errors[fKey];
@@ -72,8 +67,6 @@ function Field({ fKey, fields, form, touched, errors, onChange, onBlur }) {
     </div>
   );
 }
-
-/* ───────────────────────────────────────────────────────── */
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -114,7 +107,6 @@ export default function Checkout() {
 
   const handleNext = () => {
     if (step === 0) {
-      // validate every delivery field before moving on
       const newTouched = {};
       const newErrors = {};
       FIELDS.forEach(({ key }) => {
@@ -140,7 +132,6 @@ export default function Checkout() {
       .map((i) => `${i.name} | Size: ${i.size} | Qty: ${i.qty} | NGN ${(i.price * i.qty).toLocaleString()}`)
       .join(' || ');
 
-    /* shared params used in both templates */
     const sharedParams = {
       order_id         : orderId,
       customer_name    : `${form.firstName} ${form.lastName}`,
@@ -158,34 +149,31 @@ export default function Checkout() {
                          }),
     };
 
-    /*
-      bizParams  → sent to King-X inbox
-      "to_email" must match the "To Email" field in your
-       EJS_TEMPLATE_BIZ template on emailjs.com
-    */
+    /* bizParams → sent to King-X inbox. Template's To Email = {{to_email}} */
     const bizParams = {
       ...sharedParams,
-      to_email : 'kingzexclusiveconcept@gmail.com',  // ← King-X receives this
+      to_email : 'kingzexclusiveconcept@gmail.com',
       to_name  : 'King-X Team',
     };
 
-    /*
-      cusParams  → sent to the customer
-      "to_email" must match the "To Email" field in your
-       EJS_TEMPLATE_CUS template on emailjs.com
-    */
+    /* cusParams → sent to the customer. Template's To Email = {{to_email}} */
     const cusParams = {
       ...sharedParams,
-      to_email : form.email,            // ← customer receives this
+      to_email : form.email,
       to_name  : `${form.firstName} ${form.lastName}`,
     };
 
     try {
-      /* fire both emails in parallel */
-      await Promise.all([
-        emailjs.send(EJS_SERVICE, EJS_TEMPLATE_BIZ, bizParams, { publicKey: EJS_PUBLIC }),
-        emailjs.send(EJS_SERVICE, EJS_TEMPLATE_CUS, cusParams, { publicKey: EJS_PUBLIC }),
-      ]);
+      // Business alert — must succeed for the order to count as placed
+      await emailjs.send(EJS_SERVICE, EJS_TEMPLATE_BIZ, bizParams, { publicKey: EJS_PUBLIC });
+
+      // Customer confirmation — best-effort, won't block checkout if it fails
+      try {
+        await emailjs.send(EJS_SERVICE, EJS_TEMPLATE_CUS, cusParams, { publicKey: EJS_PUBLIC });
+      } catch (custErr) {
+        console.warn('Customer confirmation email failed (non-blocking):', custErr);
+      }
+
       clearCart();
       navigate('/order-confirmation');
     } catch (err) {
@@ -196,7 +184,6 @@ export default function Checkout() {
     }
   };
 
-  /* ── helpers ── */
   const rowKeys    = (rowNum) => FIELDS.filter((f) => f.row === rowNum).map((f) => f.key);
   const fieldProps = { fields: FIELDS, form, touched, errors, onChange: handleChange, onBlur: handleBlur };
 
@@ -205,7 +192,6 @@ export default function Checkout() {
       <div className="checkout__left">
         <div className="checkout__brand">KELLOX</div>
 
-        {/* Steps */}
         <div className="checkout__steps">
           {STEPS.map((s, i) => (
             <button
@@ -219,7 +205,6 @@ export default function Checkout() {
           ))}
         </div>
 
-        {/* Mobile order summary toggle */}
         <button className="checkout__summary-toggle" onClick={() => setSummaryOpen(o => !o)}>
           <span>Order Summary ({items.length} items)</span>
           <span className="checkout__summary-toggle-right">
@@ -243,7 +228,6 @@ export default function Checkout() {
           </div>
         )}
 
-        {/* Step 0: Delivery */}
         {step === 0 && (
           <div className="checkout__form">
             <h2>Delivery Details</h2>
@@ -262,16 +246,11 @@ export default function Checkout() {
           </div>
         )}
 
-        {/* Step 1: Payment */}
         {step === 1 && (
           <div className="checkout__form">
             <h2>Payment Method</h2>
             <div className="pay-methods">
               {[
-                /* Card and Paystack disabled for now — bank transfer only
-                { id: 'card', label: 'Credit / Debit Card' },
-                { id: 'paystack', label: 'Pay with Paystack' },
-                */
                 { id: 'transfer', label: 'Bank Transfer' },
               ].map(m => (
                 <button
@@ -285,31 +264,6 @@ export default function Checkout() {
               ))}
             </div>
 
-            {/* Card payment disabled for now — bank transfer only
-            {form.payMethod === 'card' && (
-              <div className="card-fields">
-                <div className="form-group">
-                  <label>Name on Card</label>
-                  <input placeholder="John Doe" value={form.cardName} onChange={set('cardName')} />
-                </div>
-                <div className="form-group">
-                  <label>Card Number</label>
-                  <input placeholder="0000 0000 0000 0000" value={form.cardNum} onChange={set('cardNum')} maxLength={19} />
-                </div>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label>Expiry</label>
-                    <input placeholder="MM / YY" value={form.expiry} onChange={set('expiry')} maxLength={7} />
-                  </div>
-                  <div className="form-group">
-                    <label>CVV</label>
-                    <input placeholder="•••" value={form.cvv} onChange={set('cvv')} maxLength={4} type="password" />
-                  </div>
-                </div>
-              </div>
-            )}
-            */}
-
             {form.payMethod === 'transfer' && (
               <div className="transfer-info">
                 <p>Bank: <strong>UBA</strong></p>
@@ -319,14 +273,6 @@ export default function Checkout() {
               </div>
             )}
 
-            {/* Paystack disabled for now — bank transfer only
-            {form.payMethod === 'paystack' && (
-              <div className="paystack-note">
-                <p>You'll be redirected to Paystack's secure payment page to complete your order.</p>
-              </div>
-            )}
-            */}
-
             <div className="checkout__nav-btns">
               <button className="btn-outline-dark" onClick={() => setStep(0)}>Back</button>
               <button className="btn-gold checkout__next-btn" onClick={handleNext}>Review Order</button>
@@ -334,7 +280,6 @@ export default function Checkout() {
           </div>
         )}
 
-        {/* Step 2: Review */}
         {step === 2 && (
           <div className="checkout__form">
             <h2>Review Order</h2>
@@ -387,7 +332,6 @@ export default function Checkout() {
         )}
       </div>
 
-      {/* Right: Order Summary (desktop) */}
       <div className="checkout__right">
         <h3>Order Summary</h3>
         <div className="checkout__items">

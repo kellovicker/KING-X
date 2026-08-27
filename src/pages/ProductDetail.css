@@ -44,6 +44,7 @@
 .product-detail__img-main .product-card__tag {
   position: absolute; top: 16px; left: 16px;
 }
+.product-detail__img-active--soldout { filter: grayscale(0.6); opacity: 0.55; }
 
 /* Info panel */
 .product-detail__info {

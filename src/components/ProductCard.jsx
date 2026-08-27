@@ -11,6 +11,7 @@ export default function ProductCard({ product }) {
 
   const handleAdd = (e) => {
     e.preventDefault();
+    if (product.soldOut) return;
     addItem(product);
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
@@ -18,7 +19,7 @@ export default function ProductCard({ product }) {
 
   return (
     <Link to={`/product/${product.id}`} className="product-card">
-      <div className="product-card__img">
+      <div className={`product-card__img ${product.soldOut ? 'product-card__img--soldout' : ''}`}>
         {product.tag && <span className="product-card__tag">{product.tag}</span>}
         <button
           className={`product-card__wish ${liked ? 'product-card__wish--active' : ''}`}
@@ -33,12 +34,18 @@ export default function ProductCard({ product }) {
           className="product-card__photo"
           loading="lazy"
         />
+        {product.soldOut && (
+          <div className="product-card__soldout">
+            <span>Sold Out</span>
+          </div>
+        )}
         <button
-          className={`product-card__add ${added ? 'product-card__add--done' : ''}`}
+          className={`product-card__add ${added ? 'product-card__add--done' : ''} ${product.soldOut ? 'product-card__add--disabled' : ''}`}
           onClick={handleAdd}
+          disabled={product.soldOut}
         >
           <FiShoppingBag size={14} />
-          <span>{added ? 'Added!' : 'Add To Cart'}</span>
+          <span>{product.soldOut ? 'Sold Out' : added ? 'Added!' : 'Add To Cart'}</span>
         </button>
       </div>
       <div className="product-card__info">

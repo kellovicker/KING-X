@@ -165,6 +165,7 @@ export const products = [
     images: [
       hunt,
     ],
+    soldOut: true, // set to true to show the sold-out overlay, remove/false when back in stock
   }, 
   {
     id: 11,

@@ -29,6 +29,7 @@ export default function ProductDetail() {
     .slice(0, 3);
 
   const handleAdd = () => {
+    if (product.soldOut) return;
     if (!selectedSize) { setSizeError(true); return; }
     setSizeError(false);
     addItem(product, selectedSize, qty);
@@ -69,8 +70,13 @@ export default function ProductDetail() {
               key={activeImg}
               src={product.images[activeImg]}
               alt={product.name}
-              className="product-detail__img-active"
+              className={`product-detail__img-active ${product.soldOut ? 'product-detail__img-active--soldout' : ''}`}
             />
+            {product.soldOut && (
+              <div className="product-card__soldout">
+                <span>Sold Out</span>
+              </div>
+            )}
           </div>
         </div>
 
@@ -112,9 +118,13 @@ export default function ProductDetail() {
 
           {/* Actions */}
           <div className="product-detail__actions">
-            <button className={`btn-gold product-detail__add ${added ? 'btn-done' : ''}`} onClick={handleAdd}>
+            <button
+              className={`btn-gold product-detail__add ${added ? 'btn-done' : ''} ${product.soldOut ? 'product-card__add--disabled' : ''}`}
+              onClick={handleAdd}
+              disabled={product.soldOut}
+            >
               <FiShoppingBag size={16} />
-              {added ? 'Added to Cart!' : 'Add to Cart'}
+              {product.soldOut ? 'Sold Out' : added ? 'Added to Cart!' : 'Add to Cart'}
             </button>
             <button
               className={`product-detail__wish ${liked ? 'product-detail__wish--active' : ''}`}

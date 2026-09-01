@@ -27,6 +27,7 @@ import Beanie from '../Assets/The revelation Beanie.jpeg'
 import wrapped from '../Assets/The wrapped King Tee.jpeg'
 import Tracksuitted7 from '../Assets/KING X Zip up+ side pocket pants 2.jpeg'
 import Tracksuitted8 from '../Assets/KING X Zip up+ side pocket pants.jpeg'
+import cheetah from '../Assets/cheetah.jpeg'
 
 export const products = [
   // {
@@ -164,8 +165,7 @@ export const products = [
     image: hunt,
     images: [
       hunt,
-    ],
-    soldOut: true, // set to true to show the sold-out overlay, remove/false when back in stock
+    ],// set to true to show the sold-out overlay, remove/false when back in stock
   }, 
   {
     id: 11,
@@ -234,6 +234,20 @@ export const products = [
       blindfolded1,
       blindfolded
     ],
+  },
+  {
+    id: 15,
+    name: ' King X Conquest Polo cheetah print ',
+    category: 'polo',
+    collection: 'men',
+    price: 50000,
+    tag: 'new',
+    color: '#d8d0c4',
+    image: cheetah,
+    images: [
+      cheetah,
+    ],
+    soldOut: true, 
   },
 ];
 
